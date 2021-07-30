@@ -66,3 +66,4 @@ dependencies {
 
     // lifecycle
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+}
