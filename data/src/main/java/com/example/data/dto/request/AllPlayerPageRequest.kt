@@ -1,4 +1,4 @@
-package com.example.data.reomte.request
+package com.example.data.dto.request
 
 data class AllPlayerPageRequest(
 

@@ -1,4 +1,4 @@
-package com.example.data.reomte.response
+package com.example.data.dto.response
 
 import com.example.data.entity.BasicData
 import com.example.data.entity.MetaData
