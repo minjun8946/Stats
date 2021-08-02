@@ -1,10 +1,10 @@
 package com.example.data.datasource
 
-import com.example.data.dto.request.AllPlayerPageRequest
-import com.example.data.dto.response.GetAllPlayerResponse
+import com.example.data.entity.GetAllPlayerResponse
+import com.example.data.entity.PageData
 import io.reactivex.Single
 
 interface StatsDataSource {
 
-    fun getBasicData(allPlayerPageData : AllPlayerPageRequest) : Single<GetAllPlayerResponse>
+    fun getBasicData(pageData : PageData) : Single<GetAllPlayerResponse>
 }
