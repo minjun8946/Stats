@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.stats.R
 import com.example.stats.databinding.ActivityMainBinding
+import com.example.stats.model.PageModel
 import com.example.stats.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         setContentView(binding.root)
 
-
+        viewModel.getAllPlayer(PageModel(0,100,"lebron"))
 
     }
 }

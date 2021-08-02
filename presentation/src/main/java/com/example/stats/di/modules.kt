@@ -12,9 +12,22 @@ import com.example.stats.base.BaseApi
 import com.example.stats.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 val modules = module {
 
+
+    single {
+        Retrofit.Builder()
+            .baseUrl("https://www.balldontlie.io/api/v1/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+    }
+
+    single<ApiService> { get<Retrofit>().create(ApiService::class.java) }
     //DataSource
     single <StatsDataSource>{ StatsDataSourceImpl(get()) }
 
@@ -27,8 +40,7 @@ val modules = module {
     //UseCase
     single { GetAllPlayerUseCase(get()) }
 
-    //BaseApi
-    single { BaseApi() }
+
 
     //ViewModel
     viewModel { MainViewModel(get()) }

@@ -9,10 +9,8 @@ interface ApiService {
 
     @GET("players")
     fun getAllPlayerInfo(
-        @Query("page") page : Int,
-
-        @Query("per_page") perPage : Int,
-
-        @Query("search") search : String
+        @Query("page") page : Int?,
+        @Query("per_page") perPage : Int?,
+        @Query("search") search : String?
     ):Single<GetAllPlayerResponse>
 }

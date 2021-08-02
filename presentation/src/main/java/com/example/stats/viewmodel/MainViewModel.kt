@@ -11,14 +11,15 @@ import com.example.stats.model.toEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import okhttp3.internal.notify
+import okhttp3.internal.notifyAll
+import retrofit2.HttpException
 
 class MainViewModel(
     private val getAllPlayerUseCase: GetAllPlayerUseCase,
 ):BaseViewModel() {
 
-    init {
-        getAllPlayer(PageModel(1,10,"A"))
-    }
+
 
     val successEvent =SingleLiveEvent<Unit>()
 
@@ -30,6 +31,14 @@ class MainViewModel(
             override fun onSuccess(t: Result<StatsBasicInfo>) {
                 println("wowowowowowowowowowow")
                 successEvent.setValue(Unit)
+                if (t is Result.Success){
+                    println(t.response.meta.totalPage)
+                }
+                else if(t is Result.Error){
+                    println(t.response)
+                }
+                println(t.toString())
+
             }
 
             override fun onError(e: Throwable) {
