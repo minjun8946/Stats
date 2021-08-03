@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         setContentView(binding.root)
 
-        viewModel.getAllPlayer(PageModel(1,1,"LeBron"))
+        viewModel.getAllPlayer(PageModel(1,1,null))
 
     }
 }
