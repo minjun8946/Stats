@@ -3,11 +3,11 @@ package com.example.stats.model
 import com.example.domain.entity.Page
 
 data class PageModel(
-    var page : Int,
+    var page : Int?,
 
-    val perPage : Int,
+    val perPage : Int?,
 
-    val search : String
+    val search : String?
 )
 
 fun PageModel.toEntity() =
