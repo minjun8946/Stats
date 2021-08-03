@@ -32,7 +32,7 @@ class MainViewModel(
                 println("wowowowowowowowowowow")
                 successEvent.setValue(Unit)
                 if (t is Result.Success){
-                    println(t.response.meta.totalPage)
+                    println(t.response.meta?.totalPage)
                 }
                 else if(t is Result.Error){
                     println(t.response)
