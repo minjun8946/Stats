@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class MetaData(
     @SerializedName("total_pages")
-    val totalPage : Int
+    val totalPage : Int?
 )
 
 fun MetaData.toEntity() =
