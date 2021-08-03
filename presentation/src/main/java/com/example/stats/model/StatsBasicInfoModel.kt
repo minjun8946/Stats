@@ -4,7 +4,7 @@ import com.example.domain.entity.Basic
 import com.example.domain.entity.Meta
 
 data class StatsBasicInfoModel(
-    val data : List<Basic>,
+    val data : List<BasicModel>,
 
-    val meta : Meta
+    val meta : MetaModel
 )
