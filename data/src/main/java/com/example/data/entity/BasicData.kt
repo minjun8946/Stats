@@ -5,13 +5,13 @@ import com.example.domain.entity.BasicPlayer
 import com.example.domain.entity.StatsBasicInfo
 
 data class BasicData(
-    val basicPlayerData: BasicPlayerData,
-    val basicTeamData: BasicTeamData
+    val basicPlayerData: BasicPlayerData?,
+    val basicTeamData: BasicTeamData?
 )
 
 fun BasicData.toEntity() =
     Basic (
-        basicPlayerData = basicPlayerData.toEntity(),
-        basicTeamData = basicTeamData.toEntity()
+        basicPlayerData = basicPlayerData?.toEntity(),
+        basicTeamData = basicTeamData?.toEntity()
     )
 
