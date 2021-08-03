@@ -2,7 +2,9 @@ package com.example.domain.entity
 
 data class Basic (
 
-    val basicPlayerData: BasicPlayer?,
-
-    val basicTeamData: BasicTeam?
+    val personId : Int?,
+    val firstName : String?,
+    val lastName : String?,
+    val teamId : Int?,
+    val teamName : String?
 )
