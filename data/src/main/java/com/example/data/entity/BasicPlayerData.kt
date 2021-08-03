@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 
 data class BasicPlayerData(
     @SerializedName("id")
-    val personId : Int,
+    val personId : Int?,
     @SerializedName("first_name")
-    val firstName : String,
+    val firstName : String?,
     @SerializedName("last_name")
-    val lastName : String
+    val lastName : String?
 )
 
 fun BasicPlayerData.toEntity() =
