@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class BasicTeamData(
     @SerializedName("id")
-    val teamId : Int?,
+    val teamId : Int,
     @SerializedName("full_name")
-    val teamName : String?
+    val teamName : String
 )
 
 fun BasicTeamData.toEntity() =
