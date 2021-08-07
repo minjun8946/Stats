@@ -7,12 +7,11 @@ import com.example.stats.databinding.ItemInfoBinding
 import com.example.stats.model.BasicModel
 
 
-class MainAdapter(val items : List<BasicModel>) : RecyclerView.Adapter<MainAdapter.BindingViewHolder>() {
+class MainAdapter(var items : List<BasicModel>) : RecyclerView.Adapter<MainAdapter.BindingViewHolder>() {
 
     inner class BindingViewHolder(val binding : ItemInfoBinding)
         : RecyclerView.ViewHolder(binding.root){
         fun bind(position : Int){
-            println("${items[position].firstName} 가나다라")
             binding.repo = getItems(position)
         }
     }
@@ -25,10 +24,15 @@ class MainAdapter(val items : List<BasicModel>) : RecyclerView.Adapter<MainAdapt
     override fun onBindViewHolder(holder: BindingViewHolder, position: Int) {
         holder.binding.executePendingBindings()
         holder.bind(position)
-
     }
 
     override fun getItemCount(): Int = items.size
+
+    fun changeData(newItems: List<BasicModel>) {
+        this.items = newItems
+        println("실행됨 ")
+        notifyDataSetChanged()
+    }
 
     private fun getItems(position : Int) = items[position]
 }
