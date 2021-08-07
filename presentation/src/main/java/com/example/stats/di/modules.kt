@@ -8,6 +8,7 @@ import com.example.domain.repository.StatsRepository
 import com.example.domain.service.StatsService
 import com.example.domain.service.StatsServiceImpl
 import com.example.domain.usecase.GetAllPlayerUseCase
+import com.example.stats.adapter.MainAdapter
 import com.example.stats.base.BaseApi
 import com.example.stats.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -28,6 +29,10 @@ val modules = module {
     }
 
     single<ApiService> { get<Retrofit>().create(ApiService::class.java) }
+
+    //adapter
+    single { MainAdapter(get()) }
+
     //DataSource
     single <StatsDataSource>{ StatsDataSourceImpl(get()) }
 
