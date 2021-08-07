@@ -10,9 +10,7 @@ import com.example.stats.adapter.MainAdapter
 
 @BindingAdapter("recyclerView")
 fun recyclerView(recyclerView: RecyclerView, adapter: MainAdapter) {
-    val layoutManager =
-        LinearLayoutManager(recyclerView.context, LinearLayoutManager.VERTICAL, false)
-    layoutManager.orientation = RecyclerView.VERTICAL
-    recyclerView.layoutManager = layoutManager
-    recyclerView.adapter = adapter
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context,LinearLayoutManager.VERTICAL,false)
+        adapter.notifyDataSetChanged()
 }

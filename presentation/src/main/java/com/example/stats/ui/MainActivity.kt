@@ -35,10 +35,6 @@ class MainActivity : AppCompatActivity() {
     fun successEvent(){
         viewModel.successEvent.observe(this,{
             println("실행")
-            val mainAdapter = MainAdapter(viewModel.basicModel)
-            recyclerView.adapter = mainAdapter
-            recyclerView.layoutManager = LinearLayoutManager(recyclerView.context,LinearLayoutManager.VERTICAL,false)
-            mainAdapter.notifyDataSetChanged()
         })
     }
 
