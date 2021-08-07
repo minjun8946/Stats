@@ -1,18 +1,14 @@
 package com.example.stats.model
 
 import com.example.domain.entity.Basic
-import com.example.domain.entity.BasicPlayer
-import com.example.domain.entity.BasicTeam
 
 data class BasicModel(
 
     val personId : String,
-    val firstName : String,
-    val lastName : String,
+    val name : String,
     val position : String,
-    val height_feet : String,
-    val height_inches : String,
-    val weight_pounds : String,
+    val height : String,
+    val pounds : String,
     val teamId : String,
     val teamName : String
 )
@@ -20,12 +16,19 @@ data class BasicModel(
 fun Basic.toBasicModel() : BasicModel =
     BasicModel(
         personId= "$personId",
-        firstName = firstName,
-        lastName = lastName,
+        name= "$firstName $lastName",
         position= position,
-        height_feet= "$height_feet",
-        height_inches = "$height_inches",
-        weight_pounds = "$weight_pounds",
+        height = "${changeHeight(height_feet,height_inches)}",
+        pounds = "${changePounds(weight_pounds)}",
         teamId = "$teamId",
         teamName = teamName
     )
+
+fun changeHeight(feet: Int, inches: Int): Double {
+    return (inches * 2.54) + (feet * 30.48)
+}
+
+fun changePounds(pounds : Int) : Double{
+    return pounds * 0.45
+}
+
