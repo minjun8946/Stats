@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="repo"
             type="com.example.stats.model.BasicModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="5dp"
-        xmlns:tools="http://schemas.android.com/tools">
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:id="@+id/name"
@@ -18,9 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:textColor="@color/black"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:text="@{repo.firstName}"
+            android:text="@{repo.name}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,8 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:text="@{repo.height}"
             android:textColor="@color/black"
-            android:text="@{repo.height_feet}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,9 +43,10 @@
             android:id="@+id/weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
             android:layout_marginBottom="8dp"
+            android:text="@{repo.pounds}"
             android:textColor="@color/black"
-            android:text="@{repo.weight_pounds}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,15 +56,14 @@
             android:id="@+id/position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="32dp"
-            android:textColor="@color/black"
+            android:layout_marginStart="120dp"
             android:text="@{repo.position}"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/team_name"
-            app:layout_constraintStart_toEndOf="@+id/height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="position"/>
+            tools:text="position" />
 
         <TextView
             android:id="@+id/team_name"
