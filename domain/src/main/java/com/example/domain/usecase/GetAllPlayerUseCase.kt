@@ -11,6 +11,4 @@ class GetAllPlayerUseCase(private val statsService: StatsService): UseCase<Page,
     override fun create(data: Page): Single<Result<StatsBasicInfo>> {
         return statsService.getAllPlayer(data)
     }
-
-
 }
