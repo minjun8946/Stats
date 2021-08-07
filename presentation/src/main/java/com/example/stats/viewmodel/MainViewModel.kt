@@ -18,9 +18,11 @@ class MainViewModel(
     private val getAllPlayerUseCase: GetAllPlayerUseCase,
 ):BaseViewModel() {
 
+
+
     val successEvent =SingleLiveEvent<Unit>()
     var basicModel = ArrayList<BasicModel>()
-
+    val mainAdapter = MainAdapter(basicModel)
     fun getAllPlayer(pageModel : PageModel){
 
         val allPlayerResult = getAllPlayerUseCase.create(pageModel.toEntity())
@@ -31,7 +33,7 @@ class MainViewModel(
                 if (t is Result.Success){
                     basicModel = t.response.data.map { it.toBasicModel() } as ArrayList<BasicModel>
                     successEvent.setValue(Unit)
-
+                    mainAdapter.changeData(basicModel)
                 }
 
             }
