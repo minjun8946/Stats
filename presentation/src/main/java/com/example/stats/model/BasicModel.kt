@@ -1,6 +1,7 @@
 package com.example.stats.model
 
 import com.example.domain.entity.Basic
+import kotlin.math.roundToInt
 
 data class BasicModel(
 
@@ -18,17 +19,19 @@ fun Basic.toBasicModel() : BasicModel =
         personId= "$personId",
         name= "$firstName $lastName",
         position= position,
-        height = "${changeHeight(height_feet,height_inches)}",
-        pounds = "${changePounds(weight_pounds)}",
+        height = "${changeHeight(height_feet,height_inches)}cm",
+        pounds = "${changePounds(weight_pounds)}kg",
         teamId = "$teamId",
         teamName = teamName
     )
 
-fun changeHeight(feet: Int, inches: Int): Double {
-    return (inches * 2.54) + (feet * 30.48)
+fun changeHeight(feet: Int, inches: Int): Int {
+    val cm = (inches * 2.54) + (feet * 30.48)
+    return cm.roundToInt()
 }
 
-fun changePounds(pounds : Int) : Double{
-    return pounds * 0.45
+fun changePounds(pounds : Int) : Int{
+    val kg = pounds * 0.45
+    return kg.roundToInt()
 }
 
