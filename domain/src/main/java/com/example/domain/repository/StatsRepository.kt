@@ -7,5 +7,4 @@ import io.reactivex.Single
 interface StatsRepository {
 
     fun getAllPlayerInfo(page : Page) : Single<StatsBasicInfo>
-
 }

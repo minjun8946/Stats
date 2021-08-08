@@ -12,7 +12,7 @@ open class BaseViewModel : ViewModel(){
 
     private val compositeDisposable = CompositeDisposable()
 
-    fun addDisposable(disposable: Disposable) {
+    private fun addDisposable(disposable: Disposable) {
         compositeDisposable.add(disposable)
     }
 

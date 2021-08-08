@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recycler_view)
 
         getAllPlayer()
-        successEvent()
         scrollListenerEvent()
         search()
     }
@@ -52,21 +51,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun successEvent(){
-        viewModel.successEvent.observe(this,{
-            println("실행")
-        })
-    }
-
     private fun getAllPlayer(){
         viewModel.getAllPlayer(PageModel(viewModel.page,15,searchText))
     }
-
-    fun <T> singleLiveEvent(event : SingleLiveEvent<T>) {
-        event.observe(this,{
-
-        })
-    }
-
-
 }

@@ -4,9 +4,7 @@ import com.example.domain.entity.Page
 
 data class PageModel(
     var page : Int?,
-
     val perPage : Int?,
-
     val search : String?
 )
 

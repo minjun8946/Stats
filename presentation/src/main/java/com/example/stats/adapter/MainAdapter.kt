@@ -17,6 +17,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.BindingViewHolder>() {
             binding.repo = getItems(position)
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemInfoBinding.inflate(inflater, parent, false)
@@ -37,7 +38,6 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.BindingViewHolder>() {
     fun addData(newItems: ArrayList<BasicModel>){
         this.items.addAll(newItems)
         notifyDataSetChanged()
-        println("호출 ")
     }
 
     private fun getItems(position : Int) = items[position]

@@ -18,12 +18,11 @@ class MainViewModel(
 
     var basicModel = ArrayList<BasicModel>()
     val mainAdapter = MainAdapter()
+
     var page = 1
 
-    val successEvent = SingleLiveEvent<Unit>()
     val scrollListenerEvent = SingleLiveEvent<Unit>()
     val searchEvent = SingleLiveEvent<Unit>()
-
 
     fun getAllPlayer(pageModel: PageModel){
 
@@ -33,7 +32,6 @@ class MainViewModel(
                 when (result){
                     is Result.Success ->{
                         basicModel = result.response.data.map { it.toBasicModel() } as ArrayList<BasicModel>
-                        successEvent.setValue(Unit)
                         mainAdapter.addData(basicModel)
 
                         page = when(result.response.meta.page){
@@ -58,5 +56,4 @@ class MainViewModel(
         page = 1
         searchEvent.setValue(Unit)
     }
-
 }

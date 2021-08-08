@@ -9,7 +9,6 @@ import com.example.domain.service.StatsService
 import com.example.domain.service.StatsServiceImpl
 import com.example.domain.usecase.GetAllPlayerUseCase
 import com.example.stats.adapter.MainAdapter
-import com.example.stats.base.BaseApi
 import com.example.stats.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -44,8 +43,6 @@ val modules = module {
 
     //UseCase
     single { GetAllPlayerUseCase(get()) }
-
-
 
     //ViewModel
     viewModel { MainViewModel(get()) }
