@@ -1,8 +1,6 @@
 package com.example.stats.viewmodel
 
 
-import androidx.lifecycle.MutableLiveData
-import com.example.data.entity.BasicData
 import com.example.domain.base.Result
 import com.example.domain.entity.StatsBasicInfo
 import com.example.domain.usecase.GetAllPlayerUseCase
@@ -20,35 +18,54 @@ class MainViewModel(
 
 
 
-    val successEvent =SingleLiveEvent<Unit>()
     var basicModel = ArrayList<BasicModel>()
-    val mainAdapter = MainAdapter(basicModel)
-    fun getAllPlayer(pageModel : PageModel){
+    val mainAdapter = MainAdapter()
+    var page = 1
+
+    val successEvent = SingleLiveEvent<Unit>()
+    val scrollListenerEvent = SingleLiveEvent<Unit>()
+    val searchEvent = SingleLiveEvent<Unit>()
+
+
+    fun getAllPlayer(pageModel: PageModel){
 
         val allPlayerResult = getAllPlayerUseCase.create(pageModel.toEntity())
 
         val disposableSingleObserver = object : DisposableSingleObserver<Result<StatsBasicInfo>>(){
-            override fun onSuccess(t: Result<StatsBasicInfo>) {
+            override fun onSuccess(result: Result<StatsBasicInfo>) {
 
-                if (t is Result.Success){
-                    basicModel = t.response.data.map { it.toBasicModel() } as ArrayList<BasicModel>
-                    successEvent.setValue(Unit)
-                    mainAdapter.changeData(basicModel)
+                when (result){
+                    is Result.Success ->{
+                        basicModel = result.response.data.map { it.toBasicModel() } as ArrayList<BasicModel>
+                        successEvent.setValue(Unit)
+                        mainAdapter.addData(basicModel)
+
+                        page = when(result.response.meta.page){
+                            null -> ++page
+                            else -> result.response.meta.page!!
+                        }
+                    }
+                    is Result.Error -> {
+                        println("ERROR")
+                    }
                 }
-
             }
-
             override fun onError(e: Throwable) {
                 println("error")
             }
         }
-
         val disposable = allPlayerResult
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(disposableSingleObserver)
 
         addDisposable(disposable)
+    }
+
+    fun onSearchClick(){
+        mainAdapter.clearData()
+        page = 1
+        searchEvent.setValue(Unit)
     }
 
 }
