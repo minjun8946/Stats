@@ -16,8 +16,6 @@ class MainViewModel(
     private val getAllPlayerUseCase: GetAllPlayerUseCase,
 ):BaseViewModel() {
 
-
-
     var basicModel = ArrayList<BasicModel>()
     val mainAdapter = MainAdapter()
     var page = 1
@@ -28,8 +26,6 @@ class MainViewModel(
 
 
     fun getAllPlayer(pageModel: PageModel){
-
-        val allPlayerResult = getAllPlayerUseCase.create(pageModel.toEntity())
 
         val disposableSingleObserver = object : DisposableSingleObserver<Result<StatsBasicInfo>>(){
             override fun onSuccess(result: Result<StatsBasicInfo>) {
@@ -54,12 +50,7 @@ class MainViewModel(
                 println("error")
             }
         }
-        val disposable = allPlayerResult
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(disposableSingleObserver)
-
-        addDisposable(disposable)
+        execute(pageModel.toEntity(),disposableSingleObserver,getAllPlayerUseCase)
     }
 
     fun onSearchClick(){
