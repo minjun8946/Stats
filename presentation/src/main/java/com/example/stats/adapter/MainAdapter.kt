@@ -7,7 +7,9 @@ import com.example.stats.databinding.ItemInfoBinding
 import com.example.stats.model.BasicModel
 
 
-class MainAdapter(var items : List<BasicModel>) : RecyclerView.Adapter<MainAdapter.BindingViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<MainAdapter.BindingViewHolder>() {
+
+    var items = arrayListOf<BasicModel>()
 
     inner class BindingViewHolder(val binding : ItemInfoBinding)
         : RecyclerView.ViewHolder(binding.root){
@@ -28,10 +30,14 @@ class MainAdapter(var items : List<BasicModel>) : RecyclerView.Adapter<MainAdapt
 
     override fun getItemCount(): Int = items.size
 
-    fun changeData(newItems: List<BasicModel>) {
-        this.items = newItems
-        println("실행됨 ")
+    fun clearData() {
+        this.items.clear()
+    }
+
+    fun addData(newItems: ArrayList<BasicModel>){
+        this.items.addAll(newItems)
         notifyDataSetChanged()
+        println("호출 ")
     }
 
     private fun getItems(position : Int) = items[position]

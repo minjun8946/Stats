@@ -31,7 +31,7 @@ val modules = module {
     single<ApiService> { get<Retrofit>().create(ApiService::class.java) }
 
     //adapter
-    single { MainAdapter(get()) }
+    single { MainAdapter() }
 
     //DataSource
     single <StatsDataSource>{ StatsDataSourceImpl(get()) }
