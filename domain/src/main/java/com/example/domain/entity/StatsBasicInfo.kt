@@ -4,5 +4,5 @@ data class StatsBasicInfo(
 
     val data : List<Basic>,
 
-    val meta : Meta?
+    val meta : Meta
 )
