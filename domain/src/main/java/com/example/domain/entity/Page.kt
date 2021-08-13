@@ -2,9 +2,9 @@ package com.example.domain.entity
 
 data class Page(
 
-    var page : Int?,
+    var page : Int,
 
-    val perPage : Int?,
+    val perPage : Int,
 
     val search : String?
 
