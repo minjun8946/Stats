@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="repo"
+            type="com.example.stats.model.PlayerSeasonAveragesModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/season_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{repo.season}"
+            tools:text="2020 - 2021" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/game_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@id/season_year"
+            tools:layout_editor_absoluteX="0dp">
+
+            <TextView
+                android:id="@+id/games"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.gamesPlayed}"
+                app:layout_constraintEnd_toStartOf="@+id/min"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="GAME\n67" />
+
+            <TextView
+                android:id="@+id/min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.min}"
+                app:layout_constraintEnd_toStartOf="@+id/points"
+                app:layout_constraintStart_toEndOf="@+id/games"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="MIN\n35:47" />
+
+            <TextView
+                android:id="@+id/points"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.points}"
+                app:layout_constraintEnd_toStartOf="@+id/assist"
+                app:layout_constraintStart_toEndOf="@+id/min"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="PTS\n28.75" />
+
+            <TextView
+                android:id="@+id/assist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.assist}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/points"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="AST\n7.54" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/basic_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/game_layout"
+            tools:layout_editor_absoluteX="0dp">
+
+            <TextView
+                android:id="@+id/steal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.steal}"
+                app:layout_constraintEnd_toStartOf="@+id/block"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="STL\n0.93" />
+
+            <TextView
+                android:id="@+id/block"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.block}"
+                app:layout_constraintEnd_toStartOf="@+id/turnover"
+                app:layout_constraintStart_toEndOf="@+id/steal"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="BLK\n0.25" />
+
+            <TextView
+                android:id="@+id/turnover"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.turnover}"
+                app:layout_constraintEnd_toStartOf="@+id/foul"
+                app:layout_constraintStart_toEndOf="@+id/block"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="TOV\n3.03" />
+            <TextView
+                android:id="@+id/foul"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.personalFoul}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/turnover"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="P.F\n1.52" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/middle_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/basic_layout"
+            tools:layout_editor_absoluteX="16dp">
+
+            <TextView
+                android:id="@+id/field_goal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:text="@{repo.fieldGoalMade}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/field_goal_attempted"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="FGM\n8.99" />
+
+            <TextView
+                android:id="@+id/field_goal_attempted"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.fieldGoalAttempted}"
+                app:layout_constraintEnd_toStartOf="@+id/field_goal_rate"
+                app:layout_constraintStart_toEndOf="@+id/field_goal"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="FGA\n19.91" />
+
+            <TextView
+                android:id="@+id/field_goal_rate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.fieldGoalSuccessRate}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/field_goal_attempted"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="FG%\n45.1%" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/three_point_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/middle_layout"
+            tools:layout_editor_absoluteX="16dp">
+
+            <TextView
+                android:id="@+id/three_point_goal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.threePointGoalMade}"
+                app:layout_constraintEnd_toStartOf="@+id/three_point_goal_attempted"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="3PM\n4.10" />
+
+            <TextView
+                android:id="@+id/three_point_goal_attempted"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:text="@{repo.threePointGoalAttempted}"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/three_point_goal_rate"
+                app:layout_constraintStart_toEndOf="@+id/three_point_goal"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="3PA\n7.19" />
+
+            <TextView
+                android:id="@+id/three_point_goal_rate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.threePointSuccessRate}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/three_point_goal_attempted"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="3P%\n39.1%" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rebound_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/three_point_layout"
+            tools:layout_editor_absoluteX="16dp">
+
+            <TextView
+                android:id="@+id/total_rebound"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.rebound}"
+                app:layout_constraintEnd_toStartOf="@+id/de_rebound"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="REB\n4.22" />
+
+            <TextView
+                android:id="@+id/de_rebound"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.deffensiveRebound}"
+                app:layout_constraintEnd_toStartOf="@+id/off_rebound"
+                app:layout_constraintStart_toEndOf="@+id/total_rebound"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="DREB\n3.75" />
+
+            <TextView
+                android:id="@+id/off_rebound"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.offensiveRebound}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/de_rebound"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="OREB\n0.48" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/free_throw_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/rebound_layout"
+            tools:layout_editor_absoluteX="16dp">
+
+            <TextView
+                android:id="@+id/ftm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.freeThrowMode}"
+                app:layout_constraintEnd_toStartOf="@+id/fta"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="FTM\n6.67" />
+
+            <TextView
+                android:id="@+id/fta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:text="@{repo.freeThrowAttempted}"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/ft_rate"
+                app:layout_constraintStart_toEndOf="@+id/ftm"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="FTA\n7.19" />
+
+            <TextView
+                android:id="@+id/ft_rate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="@{repo.freeThrowSuccessRate}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fta"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="FT%\n92.7%" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

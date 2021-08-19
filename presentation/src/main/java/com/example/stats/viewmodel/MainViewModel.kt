@@ -2,8 +2,10 @@ package com.example.stats.viewmodel
 
 
 import com.example.domain.base.Result
+import com.example.domain.entity.PlayerSeasonAveragesInfo
 import com.example.domain.entity.StatsBasicInfo
 import com.example.domain.usecase.GetAllPlayerUseCase
+import com.example.domain.usecase.GetPlayerSeasonAveragesUseCase
 import com.example.stats.adapter.MainAdapter
 import com.example.stats.base.BaseViewModel
 import com.example.stats.base.SingleLiveEvent
@@ -28,7 +30,6 @@ class MainViewModel(
 
         val disposableSingleObserver = object : DisposableSingleObserver<Result<StatsBasicInfo>>(){
             override fun onSuccess(result: Result<StatsBasicInfo>) {
-
                 when (result){
                     is Result.Success ->{
                         basicModel = result.response.data.map { it.toBasicModel() } as ArrayList<BasicModel>

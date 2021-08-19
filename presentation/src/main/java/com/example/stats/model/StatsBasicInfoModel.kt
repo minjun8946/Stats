@@ -8,4 +8,3 @@ data class StatsBasicInfoModel(
     val data : List<BasicModel>,
     val meta : MetaModel
 )
-

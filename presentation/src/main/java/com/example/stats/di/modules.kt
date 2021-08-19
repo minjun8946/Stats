@@ -8,8 +8,10 @@ import com.example.domain.repository.StatsRepository
 import com.example.domain.service.StatsService
 import com.example.domain.service.StatsServiceImpl
 import com.example.domain.usecase.GetAllPlayerUseCase
+import com.example.domain.usecase.GetPlayerSeasonAveragesUseCase
 import com.example.stats.adapter.MainAdapter
 import com.example.stats.viewmodel.MainViewModel
+import com.example.stats.viewmodel.PlayerDetailViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -43,7 +45,9 @@ val modules = module {
 
     //UseCase
     single { GetAllPlayerUseCase(get()) }
+    single { GetPlayerSeasonAveragesUseCase(get()) }
 
     //ViewModel
     viewModel { MainViewModel(get()) }
+    viewModel { PlayerDetailViewModel(get()) }
 }

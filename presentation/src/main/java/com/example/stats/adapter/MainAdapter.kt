@@ -1,22 +1,36 @@
 package com.example.stats.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.stats.base.SingleLiveEvent
 import com.example.stats.databinding.ItemInfoBinding
 import com.example.stats.model.BasicModel
+import com.example.stats.ui.PlayerDetailActivity
 
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.BindingViewHolder>() {
 
-    var items = arrayListOf<BasicModel>()
+    private var items = arrayListOf<BasicModel>()
+
+    lateinit var playerInfo : BasicModel
+
 
     inner class BindingViewHolder(val binding : ItemInfoBinding)
         : RecyclerView.ViewHolder(binding.root){
         fun bind(position : Int){
             binding.repo = getItems(position)
+
+            itemView.setOnClickListener {
+                playerInfo = getItems(position)
+                val intent = Intent(itemView.context,PlayerDetailActivity::class.java)
+                intent.putExtra("data",playerInfo).run { itemView.context.startActivity(this) }
+            }
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingViewHolder {
         val inflater = LayoutInflater.from(parent.context)

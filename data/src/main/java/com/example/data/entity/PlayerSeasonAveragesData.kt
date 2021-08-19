@@ -1,20 +1,25 @@
 package com.example.data.entity
 
+import com.example.domain.entity.PlayerSeasonAverages
 import com.google.gson.annotations.SerializedName
 
 data class PlayerSeasonAveragesData(
-    val games_played : Int,
-    val player_id : Int,
+    @SerializedName("games_played")
+    val gamesPlayed : Int,
+    @SerializedName("player_id")
+    val playerId : Int,
+    @SerializedName("season")
     val season : Int,
+    @SerializedName("min")
     val min : String,
     @SerializedName("fgm")
     val fieldGoalMade : Double,
     @SerializedName("fga")
     val fieldGoalAttempted : Double,
     @SerializedName("fg3m")
-    val ThreePointGoalMade : Double,
-    @SerializedName("pg3a")
-    val ThreePointGoalAttempted : Double,
+    val threePointGoalMade : Double,
+    @SerializedName("fg3a")
+    val threePointGoalAttempted : Double,
     @SerializedName("ftm")
     val freeThrowMode : Double,
     @SerializedName("fta")
@@ -30,7 +35,7 @@ data class PlayerSeasonAveragesData(
     @SerializedName("stl")
     val steal : Double,
     @SerializedName("blk")
-    val black : Double,
+    val block : Double,
     @SerializedName("turnover")
     val turnover : Double,
     @SerializedName("pf")
@@ -40,7 +45,12 @@ data class PlayerSeasonAveragesData(
     @SerializedName("fg_pct")
     val fieldGoalSuccessRate : Double,
     @SerializedName("fg3_pct")
-    val ThreePointSuccessRate : Double,
+    val threePointSuccessRate : Double,
     @SerializedName("ft_pct")
-    val FreeThrowSuccessRate : Double
+    val freeThrowSuccessRate : Double
 )
+
+fun PlayerSeasonAveragesData.toEntity() =
+    PlayerSeasonAverages(
+        gamesPlayed, playerId, season, min, fieldGoalMade, fieldGoalAttempted, threePointGoalMade, threePointGoalAttempted, freeThrowMode, freeThrowAttempted, offensiveRebound, deffensiveRebound, rebound, assist, steal, block, turnover, personalFoul, points, fieldGoalSuccessRate, threePointSuccessRate, freeThrowSuccessRate
+    )
