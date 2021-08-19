@@ -31,6 +31,8 @@ class PlayerDetailActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         setContentView(binding.root)
 
+        
+
         val basicData = intent.getSerializableExtra("data") as BasicModel
         setBasicData(basicData)
 
