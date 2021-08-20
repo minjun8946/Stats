@@ -1,6 +1,7 @@
 package com.example.stats.viewmodel
 
 
+import androidx.lifecycle.ViewModel
 import com.example.domain.base.Result
 import com.example.domain.entity.PlayerSeasonAveragesInfo
 import com.example.domain.entity.StatsBasicInfo
@@ -14,47 +15,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
-class MainViewModel(
-    private val getAllPlayerUseCase: GetAllPlayerUseCase,
-):BaseViewModel() {
+class MainViewModel : ViewModel(){
 
-    var basicModel = ArrayList<BasicModel>()
-    val mainAdapter = MainAdapter()
-
-    var page = 1
-
-    val scrollListenerEvent = SingleLiveEvent<Unit>()
-    val searchEvent = SingleLiveEvent<Unit>()
-
-    fun getAllPlayer(pageModel: PageModel){
-
-        val disposableSingleObserver = object : DisposableSingleObserver<Result<StatsBasicInfo>>(){
-            override fun onSuccess(result: Result<StatsBasicInfo>) {
-                when (result){
-                    is Result.Success ->{
-                        basicModel = result.response.data.map { it.toBasicModel() } as ArrayList<BasicModel>
-                        mainAdapter.addData(basicModel)
-
-                        page = when(result.response.meta.page){
-                            null -> ++page
-                            else -> result.response.meta.page!!
-                        }
-                    }
-                    is Result.Error -> {
-                        println("ERROR")
-                    }
-                }
-            }
-            override fun onError(e: Throwable) {
-                println("error")
-            }
-        }
-        execute(pageModel.toEntity(),disposableSingleObserver,getAllPlayerUseCase)
-    }
-
-    fun onSearchClick(){
-        mainAdapter.clearData()
-        page = 1
-        searchEvent.setValue(Unit)
-    }
 }

@@ -1,60 +1,31 @@
 package com.example.stats.adapter
 
-import android.content.Intent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.example.stats.base.SingleLiveEvent
-import com.example.stats.databinding.ItemInfoBinding
-import com.example.stats.model.BasicModel
-import com.example.stats.ui.PlayerDetailActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.stats.ui.SearchPlayerFragment
+import com.example.stats.ui.TeamFragment
+
+class MainAdapter (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+
+    val searchPlayerFragment = SearchPlayerFragment()
+    private val teamFragment  = TeamFragment()
 
 
-class MainAdapter : RecyclerView.Adapter<MainAdapter.BindingViewHolder>() {
+    companion object {
+        // 페이지 개수를 정적 변수로 선언
+        private const val NUM_PAGES = 2
+    }
 
-    private var items = arrayListOf<BasicModel>()
+    override fun getItemCount(): Int {
+        return NUM_PAGES
+    }
 
-    lateinit var playerInfo : BasicModel
-
-
-    inner class BindingViewHolder(val binding : ItemInfoBinding)
-        : RecyclerView.ViewHolder(binding.root){
-        fun bind(position : Int){
-            binding.repo = getItems(position)
-
-            itemView.setOnClickListener {
-                playerInfo = getItems(position)
-                val intent = Intent(itemView.context,PlayerDetailActivity::class.java)
-                intent.putExtra("data",playerInfo).run { itemView.context.startActivity(this) }
-            }
+    override fun createFragment(position: Int): Fragment {
+        return when(position){
+            0 -> searchPlayerFragment
+            else -> teamFragment
         }
     }
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemInfoBinding.inflate(inflater, parent, false)
-        return BindingViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: BindingViewHolder, position: Int) {
-        holder.binding.executePendingBindings()
-        holder.bind(position)
-    }
-
-    override fun getItemCount(): Int = items.size
-
-    fun clearData() {
-        this.items.clear()
-    }
-
-    fun addData(newItems: ArrayList<BasicModel>){
-        this.items.addAll(newItems)
-        notifyDataSetChanged()
-    }
-
-    private fun getItems(position : Int) = items[position]
 }
-
-

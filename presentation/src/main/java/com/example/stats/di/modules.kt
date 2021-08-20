@@ -12,6 +12,8 @@ import com.example.domain.usecase.GetPlayerSeasonAveragesUseCase
 import com.example.stats.adapter.MainAdapter
 import com.example.stats.viewmodel.MainViewModel
 import com.example.stats.viewmodel.PlayerDetailViewModel
+import com.example.stats.viewmodel.SearchPlayerViewModel
+import com.example.stats.viewmodel.TeamViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -32,7 +34,7 @@ val modules = module {
     single<ApiService> { get<Retrofit>().create(ApiService::class.java) }
 
     //adapter
-    single { MainAdapter() }
+    single { MainAdapter(get()) }
 
     //DataSource
     single <StatsDataSource>{ StatsDataSourceImpl(get()) }
@@ -48,6 +50,8 @@ val modules = module {
     single { GetPlayerSeasonAveragesUseCase(get()) }
 
     //ViewModel
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel() }
     viewModel { PlayerDetailViewModel(get()) }
+    viewModel { SearchPlayerViewModel(get()) }
+    viewModel { TeamViewModel() }
 }

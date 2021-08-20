@@ -10,6 +10,7 @@ import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.stats.R
 import com.example.stats.adapter.MainAdapter
 import com.example.stats.base.SingleLiveEvent
@@ -25,10 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel : MainViewModel by viewModel()
     private lateinit var binding : ActivityMainBinding
-
-    private lateinit var searchEditText : EditText
-
-    private var searchText =""
+    lateinit var viewPager2: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,29 +35,10 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         setContentView(binding.root)
 
-        searchEditText = findViewById(R.id.search_edittext)
+        viewPager2 = findViewById(R.id.main_viewPager2)
+        val mainAdapter = MainAdapter(this)
+        viewPager2.adapter = mainAdapter
 
-        getAllPlayer()
-        scrollListenerEvent()
-        search()
     }
-
-    private fun search(){
-        viewModel.searchEvent.observe(this,{
-            searchText = searchEditText.text.toString()
-            getAllPlayer()
-        })
-    }
-
-    private fun scrollListenerEvent(){
-        viewModel.scrollListenerEvent.observe(this,{
-            getAllPlayer()
-        })
-    }
-
-    private fun getAllPlayer(){
-        viewModel.getAllPlayer(PageModel(viewModel.page,15,searchText))
-    }
-
 
 }

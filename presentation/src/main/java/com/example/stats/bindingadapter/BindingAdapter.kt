@@ -6,11 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.stats.adapter.MainAdapter
 import com.example.stats.adapter.PlayerDetailAdapter
+import com.example.stats.adapter.SearchPlayerAdapter
 import com.example.stats.base.SingleLiveEvent
 
 
 @BindingAdapter("recyclerView")
-fun recyclerView(recyclerView: RecyclerView, adapter: MainAdapter) {
+fun recyclerView(recyclerView: RecyclerView, adapter: SearchPlayerAdapter) {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context,LinearLayoutManager.VERTICAL,false)
 }
