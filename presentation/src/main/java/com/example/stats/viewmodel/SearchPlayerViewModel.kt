@@ -53,6 +53,7 @@ class SearchPlayerViewModel(
     }
 
     fun onSearchClick() {
+        println("click")
         searchPlayerAdapter.clearData()
         page = 1
         searchEvent.setValue(Unit)

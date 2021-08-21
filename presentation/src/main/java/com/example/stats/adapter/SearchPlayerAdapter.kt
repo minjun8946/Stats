@@ -2,10 +2,8 @@ package com.example.stats.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.stats.base.SingleLiveEvent
 import com.example.stats.databinding.ItemInfoBinding
 import com.example.stats.model.BasicModel
 import com.example.stats.ui.PlayerDetailActivity

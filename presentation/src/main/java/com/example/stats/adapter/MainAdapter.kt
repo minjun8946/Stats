@@ -11,7 +11,6 @@ class MainAdapter (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fr
     val searchPlayerFragment = SearchPlayerFragment()
     private val teamFragment  = TeamFragment()
 
-
     companion object {
         // 페이지 개수를 정적 변수로 선언
         private const val NUM_PAGES = 2

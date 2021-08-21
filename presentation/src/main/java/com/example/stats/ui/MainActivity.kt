@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Layout
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -20,13 +21,14 @@ import com.example.stats.model.PageModel
 import com.example.stats.model.PlayerSeasonIdModel
 import com.example.stats.model.StatsBasicInfoModel
 import com.example.stats.viewmodel.MainViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSelectedListener {
 
     private val viewModel : MainViewModel by viewModel()
     private lateinit var binding : ActivityMainBinding
-    lateinit var viewPager2: ViewPager2
+    private lateinit var viewPager2: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +38,32 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewPager2 = findViewById(R.id.main_viewPager2)
+
         val mainAdapter = MainAdapter(this)
         viewPager2.adapter = mainAdapter
 
+        viewPager2.registerOnPageChangeCallback(
+            object : ViewPager2.OnPageChangeCallback(){
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    binding.bottomNavigationView.menu.getItem(position).isChecked = true
+                }
+            }
+        )
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener(this)
     }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.search_player ->{
+                viewPager2.currentItem = 0
+                true
+            }
+            R.id.team ->{
+                viewPager2.currentItem = 1
+                true
+            }
+            else -> false
+        }
+    }
 }
