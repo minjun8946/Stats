@@ -17,10 +17,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchPlayerFragment : Fragment() {
 
-    private lateinit var searchEditText : EditText
-
-    private var searchText =""
-
     val viewModel : SearchPlayerViewModel by viewModel()
     lateinit var binding : FragmentSearchPlayerBinding
 
@@ -33,9 +29,7 @@ class SearchPlayerFragment : Fragment() {
         binding.vm = viewModel
         binding.lifecycleOwner = this
 
-        searchEditText = view?.findViewById(R.id.search_edittext) ?: EditText(this.context)
-
-        getAllPlayer( )
+        getAllPlayer()
         scrollListenerEvent()
         search()
 
@@ -43,8 +37,8 @@ class SearchPlayerFragment : Fragment() {
     }
 
     private fun search(){
+
         viewModel.searchEvent.observe(this,{
-            searchText = searchEditText.text.toString()
             getAllPlayer()
         })
     }
@@ -56,7 +50,9 @@ class SearchPlayerFragment : Fragment() {
     }
 
     private fun getAllPlayer(){
-        viewModel.getAllPlayer(PageModel(viewModel.page,15,searchText))
+        val text = binding.searchEdittext.text.toString()
+        viewModel.getAllPlayer(PageModel(viewModel.page,15,text))
+        println("$text asdf")
     }
 
 }
