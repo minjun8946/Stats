@@ -1,6 +1,7 @@
 package com.example.stats.model
 
 import com.example.domain.entity.PlayerSeasonAverages
+import kotlin.math.*
 
 data class PlayerSeasonAveragesModel(
     val gamesPlayed : String,
@@ -35,13 +36,13 @@ fun PlayerSeasonAverages.toEntity() =
         min = "MIN\n$min",
         fieldGoalMade = "FGM\n$fieldGoalMade",
         fieldGoalAttempted = "FGA\n$fieldGoalAttempted",
-        fieldGoalSuccessRate = "FG%\n$fieldGoalSuccessRate",
+        fieldGoalSuccessRate = "FG%\n${doubleToRate(fieldGoalSuccessRate)}%",
         threePointGoalMade = "3PM\n$threePointGoalMade",
         threePointGoalAttempted = "3PA\n$threePointGoalAttempted",
-        threePointSuccessRate = "3P%\n$threePointSuccessRate",
+        threePointSuccessRate = "3P%\n${doubleToRate(threePointSuccessRate)}%",
         freeThrowMode = "FTM\n$freeThrowMode",
         freeThrowAttempted = "FTA\n$freeThrowAttempted",
-        freeThrowSuccessRate = "FT%\n$freeThrowSuccessRate",
+        freeThrowSuccessRate = "FT%\n${doubleToRate(freeThrowSuccessRate)}%",
         offensiveRebound = "OREB\n$offensiveRebound",
         deffensiveRebound = "DREB\n$deffensiveRebound",
         rebound = "REB\n$rebound",
@@ -52,3 +53,8 @@ fun PlayerSeasonAverages.toEntity() =
         personalFoul = "P.F\n$personalFoul",
         points = "PTS\n$points",
     )
+
+fun doubleToRate(double: Double) : Float{
+    val rate = double *100
+    return (rate * 10).roundToInt()/10f
+}
