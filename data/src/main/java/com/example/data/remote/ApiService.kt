@@ -2,6 +2,7 @@ package com.example.data.remote
 
 import com.example.data.entity.PlayerSeasonAveragesInfoData
 import com.example.data.entity.StatsBasicInfoData
+import com.example.data.entity.TeamBasicInfoData
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -20,4 +21,7 @@ interface ApiService {
         @Query("season") season : Int,
         @Query("player_ids[]") playerId : Int
     ) : Single<PlayerSeasonAveragesInfoData>
+
+    @GET("teams")
+    fun getTeamList() : Single<TeamBasicInfoData>
 }

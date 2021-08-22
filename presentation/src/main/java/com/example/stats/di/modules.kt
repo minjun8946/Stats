@@ -1,15 +1,24 @@
 package com.example.stats.di
 
-import com.example.data.datasource.StatsDataSource
-import com.example.data.datasource.StatsDataSourceImpl
+import com.example.data.datasource.PlayerDataSource
+import com.example.data.datasource.PlayerDataSourceImpl
+import com.example.data.datasource.TeamDataSource
+import com.example.data.datasource.TeamDataSourceImpl
 import com.example.data.remote.ApiService
-import com.example.data.repository.StatsRepositoryImpl
-import com.example.domain.repository.StatsRepository
-import com.example.domain.service.StatsService
-import com.example.domain.service.StatsServiceImpl
+import com.example.data.repository.PlayerRepositoryImpl
+import com.example.data.repository.TeamRepositoryImpl
+import com.example.domain.repository.PlayerRepository
+import com.example.domain.repository.TeamRepository
+import com.example.domain.service.PlayerService
+import com.example.domain.service.PlayerServiceImpl
+import com.example.domain.service.TeamService
+import com.example.domain.service.TeamServiceImpl
 import com.example.domain.usecase.GetAllPlayerUseCase
 import com.example.domain.usecase.GetPlayerSeasonAveragesUseCase
+import com.example.domain.usecase.GetTeamListUseCase
 import com.example.stats.adapter.MainAdapter
+import com.example.stats.adapter.PlayerDetailAdapter
+import com.example.stats.adapter.SearchPlayerAdapter
 import com.example.stats.viewmodel.MainViewModel
 import com.example.stats.viewmodel.PlayerDetailViewModel
 import com.example.stats.viewmodel.SearchPlayerViewModel
@@ -35,23 +44,30 @@ val modules = module {
 
     //adapter
     single { MainAdapter(get()) }
+    single { PlayerDetailAdapter() }
+    single { SearchPlayerAdapter() }
+
 
     //DataSource
-    single <StatsDataSource>{ StatsDataSourceImpl(get()) }
+    single <PlayerDataSource>{ PlayerDataSourceImpl(get()) }
+    single <TeamDataSource>{ TeamDataSourceImpl(get()) }
 
     //Repository
-    single<StatsRepository>{ StatsRepositoryImpl(get()) }
+    single<PlayerRepository>{ PlayerRepositoryImpl(get()) }
+    single<TeamRepository>{ TeamRepositoryImpl(get()) }
 
     //Service
-    single <StatsService>{ StatsServiceImpl(get()) }
+    single <PlayerService>{ PlayerServiceImpl(get()) }
+    single <TeamService>{ TeamServiceImpl(get()) }
 
     //UseCase
     single { GetAllPlayerUseCase(get()) }
     single { GetPlayerSeasonAveragesUseCase(get()) }
+    single { GetTeamListUseCase(get()) }
 
     //ViewModel
     viewModel { MainViewModel() }
     viewModel { PlayerDetailViewModel(get()) }
     viewModel { SearchPlayerViewModel(get()) }
-    viewModel { TeamViewModel() }
+    viewModel { TeamViewModel(get()) }
 }
