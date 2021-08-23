@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="vm"
@@ -22,8 +21,7 @@
             android:background="@drawable/search_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
+            app:layout_constraintTop_toTopOf="parent">
 
             <EditText
                 android:id="@+id/search_edittext"
@@ -59,12 +57,14 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:recyclerView="@{vm.searchPlayerAdapter}"
-            app:scrollListener="@{vm.scrollListenerEvent}"
+            android:layout_marginTop="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_layout"
-            android:layout_marginTop="20dp"/>
+            app:recyclerView="@{vm.searchPlayerAdapter}"
+            app:scrollListener="@{vm.scrollListenerEvent}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

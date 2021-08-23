@@ -33,8 +33,7 @@ class SearchPlayerViewModel(
             override fun onSuccess(result: Result<StatsBasicInfo>) {
                 when (result) {
                     is Result.Success -> {
-                        basicModel =
-                            result.response.data.map { it.toBasicModel() } as ArrayList<BasicModel>
+                        basicModel = result.response.data.map { it.toBasicModel() } as ArrayList<BasicModel>
                         searchPlayerAdapter.addData(basicModel.map { it.toRecyclerItem() })
 
                         page = when (result.response.meta.page) {
@@ -65,7 +64,7 @@ class SearchPlayerViewModel(
         RecyclerItem(
             data = this,
             variableId = BR.repo,
-            layoutId = R.layout.item_info
+            layoutId = R.layout.item_player
 
         )
 }

@@ -1,7 +1,10 @@
 package com.example.stats.bindingadapter
 
 import android.content.Intent
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintLayoutStates
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -33,5 +36,5 @@ fun RecyclerView.scrollListener(scrollListener : SingleLiveEvent<Unit>){
 @BindingAdapter("viewpager")
 fun ViewPager2.viewPager(recyclerAdapter : RecyclerViewAdapter){
         adapter = recyclerAdapter
-        orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
 }
