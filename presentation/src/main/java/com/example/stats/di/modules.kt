@@ -17,8 +17,7 @@ import com.example.domain.usecase.GetAllPlayerUseCase
 import com.example.domain.usecase.GetPlayerSeasonAveragesUseCase
 import com.example.domain.usecase.GetTeamListUseCase
 import com.example.stats.adapter.MainAdapter
-import com.example.stats.adapter.PlayerDetailAdapter
-import com.example.stats.adapter.SearchPlayerAdapter
+import com.example.stats.adapter.RecyclerViewAdapter
 import com.example.stats.viewmodel.MainViewModel
 import com.example.stats.viewmodel.PlayerDetailViewModel
 import com.example.stats.viewmodel.SearchPlayerViewModel
@@ -44,9 +43,7 @@ val modules = module {
 
     //adapter
     single { MainAdapter(get()) }
-    single { PlayerDetailAdapter() }
-    single { SearchPlayerAdapter() }
-
+    single { RecyclerViewAdapter() }
 
     //DataSource
     single <PlayerDataSource>{ PlayerDataSourceImpl(get()) }

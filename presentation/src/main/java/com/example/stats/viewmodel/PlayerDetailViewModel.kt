@@ -5,18 +5,15 @@ import androidx.annotation.RequiresApi
 import com.example.domain.base.Result
 import com.example.domain.entity.PlayerSeasonAveragesInfo
 import com.example.domain.usecase.GetPlayerSeasonAveragesUseCase
-import com.example.stats.adapter.PlayerDetailAdapter
 import com.example.stats.base.BaseViewModel
 import com.example.stats.base.SingleLiveEvent
 import com.example.stats.model.PlayerSeasonAveragesModel
 import com.example.stats.model.PlayerSeasonIdModel
 import com.example.stats.model.toEntity
 import io.reactivex.observers.DisposableSingleObserver
-import java.time.Instant
 import java.time.LocalDate
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.time.hours
 
 class PlayerDetailViewModel(
     private val getPlayerSeasonAveragesUseCase: GetPlayerSeasonAveragesUseCase

@@ -3,7 +3,10 @@ package com.example.stats.viewmodel
 import com.example.domain.base.Result
 import com.example.domain.entity.StatsBasicInfo
 import com.example.domain.usecase.GetAllPlayerUseCase
-import com.example.stats.adapter.SearchPlayerAdapter
+import com.example.stats.BR
+import com.example.stats.R
+import com.example.stats.adapter.RecyclerItem
+import com.example.stats.adapter.RecyclerViewAdapter
 import com.example.stats.base.BaseViewModel
 import com.example.stats.base.SingleLiveEvent
 import com.example.stats.model.BasicModel
@@ -17,7 +20,7 @@ class SearchPlayerViewModel(
 ):BaseViewModel() {
 
     var basicModel = ArrayList<BasicModel>()
-    val searchPlayerAdapter = SearchPlayerAdapter()
+    val searchPlayerAdapter = RecyclerViewAdapter()
 
     var page = 1
 
@@ -32,7 +35,7 @@ class SearchPlayerViewModel(
                     is Result.Success -> {
                         basicModel =
                             result.response.data.map { it.toBasicModel() } as ArrayList<BasicModel>
-                        searchPlayerAdapter.addData(basicModel)
+                        searchPlayerAdapter.addData(basicModel.map { it.toRecyclerItem() })
 
                         page = when (result.response.meta.page) {
                             null -> ++page
@@ -58,4 +61,11 @@ class SearchPlayerViewModel(
         page = 1
         searchEvent.setValue(Unit)
     }
+    fun BasicModel.toRecyclerItem() =
+        RecyclerItem(
+            data = this,
+            variableId = BR.repo,
+            layoutId = R.layout.item_info
+
+        )
 }
