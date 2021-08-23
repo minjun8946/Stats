@@ -1,21 +1,30 @@
 package com.example.stats.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.example.data.entity.BasicData
+import com.example.stats.R
+import com.example.stats.model.BasicModel
+import com.example.stats.ui.PlayerDetailActivity
 
-class RecyclerViewAdapter : RecyclerView.Adapter<BindingViewHolder>() {
+class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingViewHolder>() {
 
     val items = arrayListOf<RecyclerItem>()
+
+    private lateinit var playerInfo : RecyclerItem
 
     override fun getItemCount(): Int {
         return items.size
     }
 
     override fun getItemViewType(position: Int): Int {
-        return getItem(position).layoutId
+        return getItems(position).layoutId
+
     }
 
     override fun onCreateViewHolder(
@@ -24,6 +33,7 @@ class RecyclerViewAdapter : RecyclerView.Adapter<BindingViewHolder>() {
     ): BindingViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: ViewDataBinding = DataBindingUtil.inflate(inflater, viewType, parent, false)
+
         return BindingViewHolder(binding)
     }
 
@@ -31,8 +41,21 @@ class RecyclerViewAdapter : RecyclerView.Adapter<BindingViewHolder>() {
         holder: BindingViewHolder,
         position: Int
     ) {
-        getItem(position).bind(holder.binding)
+        onClick(holder.itemView,position)
+        getItems(position).bind(holder.binding)
         holder.binding.executePendingBindings()
+
+    }
+
+    private fun onClick(view : View,position: Int){
+        view.setOnClickListener {
+            if(items[position].layoutId == R.layout.item_info){
+                playerInfo = getItems(position)
+                val intent = Intent(view.context,PlayerDetailActivity::class.java)
+                intent.putExtra("data",playerInfo.data as BasicModel).run { view.context.startActivity(intent) }
+
+            }
+        }
     }
 
     fun clearData() {
@@ -45,12 +68,15 @@ class RecyclerViewAdapter : RecyclerView.Adapter<BindingViewHolder>() {
         notifyDataSetChanged()
     }
 
-    private fun getItem(position: Int): RecyclerItem {
+    private fun getItems(position: Int): RecyclerItem {
         return items[position]
     }
 
+    inner class BindingViewHolder(
+        val binding: ViewDataBinding
+    ) : RecyclerView.ViewHolder(binding.root){
+    }
+
+
 }
 
-class BindingViewHolder(
-    val binding: ViewDataBinding
-) : RecyclerView.ViewHolder(binding.root)

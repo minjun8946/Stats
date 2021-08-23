@@ -1,5 +1,6 @@
 package com.example.stats.bindingadapter
 
+import android.content.Intent
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +18,8 @@ fun RecyclerView.setRecyclerAdapter(adapter: RecyclerViewAdapter) {
 }
 
 @BindingAdapter("scrollListener")
-fun scrollListener(recyclerView: RecyclerView, scrollListener : SingleLiveEvent<Unit>){
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+fun RecyclerView.scrollListener(scrollListener : SingleLiveEvent<Unit>){
+        addOnScrollListener(object : RecyclerView.OnScrollListener(){
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                         super.onScrolled(recyclerView, dx, dy)
                         if(!recyclerView.canScrollVertically(1)){
@@ -28,8 +29,9 @@ fun scrollListener(recyclerView: RecyclerView, scrollListener : SingleLiveEvent<
         })
 }
 
+
 @BindingAdapter("viewpager")
-fun viewPager(viewPager2: ViewPager2,adapter : PlayerDetailAdapter){
-        viewPager2.adapter = adapter
-        viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+fun ViewPager2.viewPager(recyclerAdapter : RecyclerViewAdapter){
+        adapter = recyclerAdapter
+        orientation = ViewPager2.ORIENTATION_HORIZONTAL
 }
