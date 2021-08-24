@@ -18,10 +18,7 @@ import com.example.domain.usecase.GetPlayerSeasonAveragesUseCase
 import com.example.domain.usecase.GetTeamListUseCase
 import com.example.stats.adapter.MainAdapter
 import com.example.stats.adapter.RecyclerViewAdapter
-import com.example.stats.viewmodel.MainViewModel
-import com.example.stats.viewmodel.PlayerDetailViewModel
-import com.example.stats.viewmodel.SearchPlayerViewModel
-import com.example.stats.viewmodel.TeamViewModel
+import com.example.stats.viewmodel.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -67,4 +64,5 @@ val modules = module {
     viewModel { PlayerDetailViewModel(get()) }
     viewModel { SearchPlayerViewModel(get()) }
     viewModel { TeamViewModel(get()) }
+    viewModel { CalenderViewModel() }
 }

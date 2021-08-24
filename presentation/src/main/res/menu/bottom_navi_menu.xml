@@ -5,9 +5,16 @@
         android:id="@+id/search_player"
         android:enabled="true"
         android:title="선수 검색"
+        android:icon="@drawable/player"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/team"
         android:enabled="true"
+        android:icon="@drawable/team"
         android:title="팀"/>
+    <item
+        android:id="@+id/games_calender"
+        android:enabled="true"
+        android:icon="@drawable/team"
+        android:title="경기 일정"/>
 </menu>

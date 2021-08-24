@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSe
         val mainAdapter = MainAdapter(this)
         viewPager2.adapter = mainAdapter
 
+
         viewPager2.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback(){
                 override fun onPageSelected(position: Int) {
@@ -63,7 +64,10 @@ class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSe
                 viewPager2.currentItem = 1
                 true
             }
-            else -> false
+            else -> {
+                viewPager2.currentItem = 2
+                true
+            }
         }
     }
 }
