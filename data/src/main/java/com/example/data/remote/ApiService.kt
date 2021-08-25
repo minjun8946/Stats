@@ -1,8 +1,6 @@
 package com.example.data.remote
 
-import com.example.data.entity.PlayerSeasonAveragesInfoData
-import com.example.data.entity.StatsBasicInfoData
-import com.example.data.entity.TeamBasicInfoData
+import com.example.data.entity.*
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -24,4 +22,9 @@ interface ApiService {
 
     @GET("teams")
     fun getTeamList() : Single<TeamBasicInfoData>
+
+    @GET("games")
+    fun getGameData(
+        @Query("dates[]") date : String
+    ) : Single<GamesInfoData>
 }

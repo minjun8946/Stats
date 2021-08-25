@@ -1,19 +1,16 @@
 package com.example.stats.di
 
-import com.example.data.datasource.PlayerDataSource
-import com.example.data.datasource.PlayerDataSourceImpl
-import com.example.data.datasource.TeamDataSource
-import com.example.data.datasource.TeamDataSourceImpl
+import com.example.data.datasource.*
 import com.example.data.remote.ApiService
+import com.example.data.repository.GamesRepositoryImpl
 import com.example.data.repository.PlayerRepositoryImpl
 import com.example.data.repository.TeamRepositoryImpl
+import com.example.domain.repository.GamesRepository
 import com.example.domain.repository.PlayerRepository
 import com.example.domain.repository.TeamRepository
-import com.example.domain.service.PlayerService
-import com.example.domain.service.PlayerServiceImpl
-import com.example.domain.service.TeamService
-import com.example.domain.service.TeamServiceImpl
+import com.example.domain.service.*
 import com.example.domain.usecase.GetAllPlayerUseCase
+import com.example.domain.usecase.GetGamesDataUseCase
 import com.example.domain.usecase.GetPlayerSeasonAveragesUseCase
 import com.example.domain.usecase.GetTeamListUseCase
 import com.example.stats.adapter.MainAdapter
@@ -45,24 +42,28 @@ val modules = module {
     //DataSource
     single <PlayerDataSource>{ PlayerDataSourceImpl(get()) }
     single <TeamDataSource>{ TeamDataSourceImpl(get()) }
+    single <GamesDataSource>{ GamesDataSourceImpl(get()) }
 
     //Repository
     single<PlayerRepository>{ PlayerRepositoryImpl(get()) }
     single<TeamRepository>{ TeamRepositoryImpl(get()) }
+    single<GamesRepository>{ GamesRepositoryImpl(get()) }
 
     //Service
     single <PlayerService>{ PlayerServiceImpl(get()) }
     single <TeamService>{ TeamServiceImpl(get()) }
+    single <GamesService>{ GamesServiceImpl(get()) }
 
     //UseCase
     single { GetAllPlayerUseCase(get()) }
     single { GetPlayerSeasonAveragesUseCase(get()) }
     single { GetTeamListUseCase(get()) }
+    single { GetGamesDataUseCase(get()) }
 
     //ViewModel
     viewModel { MainViewModel() }
     viewModel { PlayerDetailViewModel(get()) }
     viewModel { SearchPlayerViewModel(get()) }
     viewModel { TeamViewModel(get()) }
-    viewModel { CalenderViewModel() }
+    viewModel { CalenderViewModel(get()) }
 }

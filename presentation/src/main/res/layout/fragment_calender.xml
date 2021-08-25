@@ -13,12 +13,14 @@
 
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/cv_calendar"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:mcv_showOtherDates="all"
-            app:mcv_weekDayTextAppearance="@color/black"
-            app:mcv_selectionColor="#00F"/>
+            app:mcv_weekDayTextAppearance="@color/black" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
