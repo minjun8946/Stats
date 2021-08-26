@@ -1,6 +1,7 @@
 package com.example.stats.model
 
 import com.example.domain.entity.BasicTeam
+import com.example.stats.base.teamImage
 
 data class BasicTeamModel(
     val teamId : Int,
@@ -12,7 +13,7 @@ data class BasicTeamModel(
 
 fun BasicTeam.toEntity() =
     BasicTeamModel(
-        teamId = teamId,
+        teamId = teamImage(teamId),
         teamName = teamName,
         city = city,
         conference = conference,

@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:recyclerView="@{vm.teamAdapter}" />
+            app:recyclerView="@{vm.teamAdapter}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

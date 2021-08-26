@@ -1,6 +1,7 @@
 package com.example.stats.model
 
 import com.example.domain.entity.Basic
+import com.example.stats.base.teamImage
 import java.io.Serializable
 import kotlin.math.roundToInt
 
@@ -22,7 +23,7 @@ fun Basic.toBasicModel() : BasicModel =
         position= position,
         height = "${changeHeight(height_feet,height_inches)}cm",
         pounds = "${changePounds(weight_pounds)}kg",
-        teamId = teamId,
+        teamId = teamImage(teamId),
         teamName = teamName
     )
 

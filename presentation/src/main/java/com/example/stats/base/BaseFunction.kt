@@ -34,6 +34,6 @@ fun teamImage(teamId : Int) : Int{
         28 -> R.drawable.toronto_raptors
         29 -> R.drawable.utah_jazz
         30 -> R.drawable.washington_wizards
-        else -> R.drawable.player
+        else -> R.drawable.washington_wizards
     }
 }
