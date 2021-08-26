@@ -3,8 +3,14 @@ package com.example.stats.viewmodel
 import com.example.domain.base.Result
 import com.example.domain.entity.GamesInfo
 import com.example.domain.usecase.GetGamesDataUseCase
+import com.example.stats.BR
+import com.example.stats.R
+import com.example.stats.adapter.RecyclerItem
+import com.example.stats.adapter.RecyclerViewAdapter
 import com.example.stats.base.BaseViewModel
+import com.example.stats.model.BasicTeamModel
 import com.example.stats.model.DateModel
+import com.example.stats.model.GamesModel
 import com.example.stats.model.toEntity
 import io.reactivex.observers.DisposableSingleObserver
 
@@ -12,6 +18,8 @@ class CalenderViewModel(
     private val getGamesDataUseCase : GetGamesDataUseCase
 ) : BaseViewModel() {
 
+    var gamesData = ArrayList<GamesModel>()
+    var gameListAdapter = RecyclerViewAdapter()
 
     fun getGamesData(date : DateModel){
 
@@ -19,7 +27,10 @@ class CalenderViewModel(
 
             override fun onSuccess(t: Result<GamesInfo>) {
                 when(t){
-                    is Result.Success -> println(t.response)
+                    is Result.Success -> {
+                        gamesData = t.response.data.map { it.toEntity() } as ArrayList<GamesModel>
+                        gameListAdapter.changeData(gamesData.map { it.toRecyclerItem() })
+                    }
                     is Result.Error -> println(t.response)
                 }
             }
@@ -31,5 +42,11 @@ class CalenderViewModel(
 
         execute(date.toEntity(),disposableObserver,getGamesDataUseCase)
     }
+    fun GamesModel.toRecyclerItem() =
+        RecyclerItem(
+            data = this,
+            variableId = BR.repo,
+            layoutId = R.layout.item_game_list
+        )
 
 }

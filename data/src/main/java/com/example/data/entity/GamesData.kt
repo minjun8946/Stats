@@ -15,9 +15,9 @@ data class GamesData(
     @SerializedName("postseason")
     val postSeason : Boolean,
     @SerializedName("visitor_team")
-    val visitorTeamData: VisitorTeamData,
+    val visitorTeam: VisitorTeamData,
     @SerializedName("home_team")
-    val homeTeamData: HomeTeamData
+    val homeTeam: HomeTeamData
 )
 
 fun GamesData.toEntity() =
@@ -27,6 +27,6 @@ fun GamesData.toEntity() =
         visitorTeamScore = visitorTeamScore,
         period = period,
         postSeason = postSeason,
-        visitorTeamData = visitorTeamData.toEntity(),
-        homeTeamData = homeTeamData.toEntity()
+        visitorTeam = visitorTeam.toEntity(),
+        homeTeam = homeTeam.toEntity()
     )

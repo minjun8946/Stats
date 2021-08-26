@@ -59,6 +59,11 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingView
         this.items.clear()
         notifyDataSetChanged()
     }
+    fun changeData(newItems : List<RecyclerItem>){
+        this.items.clear()
+        this.items.addAll(newItems)
+        notifyDataSetChanged()
+    }
 
     fun addData(newItems: List<RecyclerItem>) {
         this.items.addAll(newItems)

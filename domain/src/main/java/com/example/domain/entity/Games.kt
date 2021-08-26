@@ -7,6 +7,6 @@ data class Games(
     val visitorTeamScore : Int,
     val period : Int,
     val postSeason : Boolean,
-    val visitorTeamData: VisitorTeam,
-    val homeTeamData: HomeTeam
+    val visitorTeam: VisitorTeam,
+    val homeTeam: HomeTeam
 )

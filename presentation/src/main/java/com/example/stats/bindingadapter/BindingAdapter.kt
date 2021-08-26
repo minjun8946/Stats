@@ -1,6 +1,7 @@
 package com.example.stats.bindingadapter
 
 import android.content.Intent
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintLayoutStates
 import androidx.databinding.BindingAdapter
@@ -18,6 +19,11 @@ fun RecyclerView.setRecyclerAdapter(adapter: RecyclerViewAdapter) {
                 this.adapter = adapter
                 layoutManager = LinearLayoutManager(context)
         }
+}
+
+@BindingAdapter("imageBinding")
+fun ImageView.imageBinding(resId : Int){
+        setImageResource(resId)
 }
 
 @BindingAdapter("scrollListener")

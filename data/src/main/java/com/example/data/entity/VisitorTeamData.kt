@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class VisitorTeamData(
     @SerializedName("id")
     val visitorTeamId : Int,
-    @SerializedName("city")
+    @SerializedName("name")
     val visitorTeamCityName : String
 )
 
