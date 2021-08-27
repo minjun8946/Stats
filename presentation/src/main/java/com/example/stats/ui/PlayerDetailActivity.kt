@@ -63,5 +63,6 @@ class PlayerDetailActivity : AppCompatActivity() {
         teamName.text = basicData.teamName
         teamImage = findViewById(R.id.detail_team_image)
         teamImage.setImageDrawable(resources.getDrawable(teamImage(basicData.teamId)))
+        println("${basicData.teamId} 아이더 넘버 ")
     }
 }
