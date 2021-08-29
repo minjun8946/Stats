@@ -1,8 +1,8 @@
 package com.example.stats.viewmodel
 
 
-import androidx.lifecycle.ViewModel
+import com.example.stats.base.BaseViewModel
 
-class MainViewModel : ViewModel(){
+class MainViewModel : BaseViewModel(){
 
 }
