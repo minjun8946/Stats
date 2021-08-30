@@ -8,4 +8,6 @@ interface PlayerDataSource {
     fun getBasicData(pageData : PageData) : Single<StatsBasicInfoData>
 
     fun getPlayerSeasonAverages(playerSeasonIdData: PlayerSeasonIdData) : Single<PlayerSeasonAveragesInfoData>
+
+    fun getPlayerStats(gamesId : Int) : Single<PlayerStatsInfoData>
 }

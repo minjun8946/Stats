@@ -1,9 +1,6 @@
 package com.example.data.entity
 
 import com.example.domain.entity.Basic
-import com.example.domain.entity.BasicPlayer
-import com.example.domain.entity.StatsBasicInfo
-import com.google.gson.annotations.SerializedName
 
 data class BasicData(
     val id : Int,

@@ -8,7 +8,6 @@ import com.example.stats.R
 import com.example.stats.adapter.RecyclerItem
 import com.example.stats.adapter.RecyclerViewAdapter
 import com.example.stats.base.BaseViewModel
-import com.example.stats.model.BasicTeamModel
 import com.example.stats.model.DateModel
 import com.example.stats.model.GamesModel
 import com.example.stats.model.toEntity

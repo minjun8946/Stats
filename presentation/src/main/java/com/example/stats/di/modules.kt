@@ -9,10 +9,7 @@ import com.example.domain.repository.GamesRepository
 import com.example.domain.repository.PlayerRepository
 import com.example.domain.repository.TeamRepository
 import com.example.domain.service.*
-import com.example.domain.usecase.GetAllPlayerUseCase
-import com.example.domain.usecase.GetGamesDataUseCase
-import com.example.domain.usecase.GetPlayerSeasonAveragesUseCase
-import com.example.domain.usecase.GetTeamListUseCase
+import com.example.domain.usecase.*
 import com.example.stats.adapter.MainAdapter
 import com.example.stats.adapter.RecyclerViewAdapter
 import com.example.stats.viewmodel.*
@@ -23,7 +20,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 val modules = module {
-
 
     single {
         Retrofit.Builder()
@@ -59,11 +55,12 @@ val modules = module {
     single { GetPlayerSeasonAveragesUseCase(get()) }
     single { GetTeamListUseCase(get()) }
     single { GetGamesDataUseCase(get()) }
+    single { GetPlayerStatsUseCase(get()) }
 
     //ViewModel
     viewModel { MainViewModel() }
     viewModel { PlayerDetailViewModel(get()) }
     viewModel { SearchPlayerViewModel(get()) }
-    viewModel { TeamViewModel(get()) }
+    viewModel { TeamViewModel(get(),get()) }
     viewModel { CalenderViewModel(get()) }
 }

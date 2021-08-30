@@ -21,4 +21,8 @@ class PlayerDataSourceImpl(private val api : ApiService) : PlayerDataSource{
             season = playerSeasonIdData.season,
             playerId = playerSeasonIdData.playerId
         )
+
+    override fun getPlayerStats(gamesId: Int): Single<PlayerStatsInfoData> =
+        api.getPlayerStatsInfo(gamesId)
+
 }

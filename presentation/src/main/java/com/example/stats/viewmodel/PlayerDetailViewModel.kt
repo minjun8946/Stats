@@ -15,11 +15,8 @@ import com.example.stats.model.PlayerSeasonAveragesModel
 import com.example.stats.model.PlayerSeasonIdModel
 import com.example.stats.model.toEntity
 import io.reactivex.observers.DisposableSingleObserver
-import java.time.Instant
 import java.time.LocalDate
-import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.time.hours
 
 class PlayerDetailViewModel(
     private val getPlayerSeasonAveragesUseCase: GetPlayerSeasonAveragesUseCase
