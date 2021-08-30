@@ -29,6 +29,7 @@ class SearchPlayerFragment : BaseFragment<FragmentSearchPlayerBinding, SearchPla
 
     private fun search() {
         viewModel.searchEvent.observe(this, {
+            viewModel.getPlayerStats()
             getAllPlayer()
         })
     }

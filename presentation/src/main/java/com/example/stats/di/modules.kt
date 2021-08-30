@@ -55,12 +55,11 @@ val modules = module {
     single { GetPlayerSeasonAveragesUseCase(get()) }
     single { GetTeamListUseCase(get()) }
     single { GetGamesDataUseCase(get()) }
-    single { GetPlayerStatsUseCase(get()) }
 
     //ViewModel
     viewModel { MainViewModel() }
     viewModel { PlayerDetailViewModel(get()) }
     viewModel { SearchPlayerViewModel(get()) }
-    viewModel { TeamViewModel(get(),get()) }
+    viewModel { TeamViewModel(get()) }
     viewModel { CalenderViewModel(get()) }
 }

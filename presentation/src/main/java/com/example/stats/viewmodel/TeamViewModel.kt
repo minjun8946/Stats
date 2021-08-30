@@ -17,29 +17,10 @@ import retrofit2.HttpException
 
 class TeamViewModel(
     private val getTeamListUseCase: GetTeamListUseCase,
-    private val getPlayerStatsUseCase: GetPlayerStatsUseCase
 ) : BaseViewModel() {
 
     val teamAdapter = RecyclerViewAdapter()
     var teamBasicModel = ArrayList<BasicTeamModel>()
-
-    fun getPlayerStats(){
-        val disposableSingleObserver = object : DisposableSingleObserver<Result<PlayerStatsInfo>>(){
-            override fun onSuccess(t: Result<PlayerStatsInfo>) {
-                when(t){
-                    is Result.Success ->println(t)
-                    is Result.Error -> {
-                        println(t.response)
-                    }
-                }
-            }
-
-            override fun onError(e: Throwable) {
-                println(e.message)
-            }
-        }
-        execute(448337,disposableSingleObserver,getPlayerStatsUseCase)
-    }
 
     fun getTeamList(){
         val disposableSingleObserver = object : DisposableSingleObserver<Result<TeamBasicInfo>>(){

@@ -21,6 +21,5 @@ class TeamFragment : BaseFragment<FragmentTeamBinding,TeamViewModel>() {
 
     override fun init() {
         viewModel.getTeamList()
-        viewModel.getPlayerStats()
     }
 }

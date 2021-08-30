@@ -9,5 +9,4 @@ interface PlayerDataSource {
 
     fun getPlayerSeasonAverages(playerSeasonIdData: PlayerSeasonIdData) : Single<PlayerSeasonAveragesInfoData>
 
-    fun getPlayerStats(gamesId : Int) : Single<PlayerStatsInfoData>
 }
