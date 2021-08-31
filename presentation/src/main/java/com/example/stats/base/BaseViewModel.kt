@@ -1,6 +1,8 @@
 package com.example.stats.base
 
 import androidx.lifecycle.ViewModel
+import com.example.domain.base.Message
+import com.example.domain.base.Result
 import com.example.domain.base.UseCase
 import com.example.domain.usecase.GetPlayerStatsUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -27,6 +29,23 @@ open class BaseViewModel : ViewModel(){
             .subscribeWith(disposableSingleObserver)
 
         addDisposable(disposable)
+    }
+
+    fun <T> onErrorData(result: Result.Error<T>) {
+        if (result.response != null) {
+            when (result.message) {
+
+                Message.UnKnownError -> println("알수없는 오류가 발생했습니다 ${result.message.ordinal}")
+                Message.NetWorkError -> println("네트워크 오류가 발생했습니다 ")
+                else ->println("알 수 없는 오류 발")
+            }
+        } else {
+            when (result.message) {
+                Message.UnKnownError -> println("알수없는 오류가 발생했습니다 ${result.message.ordinal}")
+                Message.NetWorkError -> println("네트워크 오류가 발생했습니다 ")
+                else ->println("알 수 없는 오류 발")
+            }
+        }
     }
 
     override fun onCleared() {
