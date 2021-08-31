@@ -23,32 +23,10 @@ import retrofit2.HttpException
 
 class CalenderViewModel(
     private val getGamesDataUseCase : GetGamesDataUseCase,
-    private val getPlayerStatsUseCase: GetPlayerStatsUseCase
 ) : BaseViewModel() {
 
     var gamesData = ArrayList<GamesModel>()
     var gameListAdapter = RecyclerViewAdapter()
-
-    fun getStats(gameId: GameIdModel){
-
-        val disposableSingleObserver = object : DisposableSingleObserver<Result<PlayerStatsInfo>>(){
-            override fun onSuccess(t: Result<PlayerStatsInfo>) {
-
-                when(t){
-                    is Result.Success ->println(t)
-                    is Result.Error -> {
-                        println(t)
-
-                    }
-                }
-            }
-            override fun onError(e: Throwable) {
-                println(e.message)
-            }
-        }
-        execute(gameId.toEntity(), disposableSingleObserver, getPlayerStatsUseCase)
-
-    }
 
     fun getGamesData(date : DateModel){
 

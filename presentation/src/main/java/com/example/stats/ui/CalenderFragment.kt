@@ -21,7 +21,6 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding, CalenderViewModel
         binding.cvCalendar.setOnDateChangedListener { widget, date, selected ->
             val koreaTime = date.date.minusDays(1)
             viewModel.getGamesData(DateModel("${koreaTime.year}-${koreaTime.month.value}-${date.day - 1}"))
-            viewModel.getStats(GameIdModel(32881,100))
         }
     }
 
