@@ -1,5 +1,7 @@
 package com.example.stats.base
 
+import com.example.domain.base.Message
+import com.example.domain.base.Result
 import com.example.stats.R
 
 fun teamImage(teamId : Int) : Int{
