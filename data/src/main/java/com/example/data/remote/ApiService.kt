@@ -29,8 +29,8 @@ interface ApiService {
     ) : Single<GamesInfoData>
 
     @GET("stats")
-
     fun getPlayerStatsInfo(
-        @Query("game_ids[]") id : Int
+        @Query("game_ids[]") gameId : Int,
+        @Query("per_page") perPage: Int
     ) : Single<PlayerStatsInfoData>
 }

@@ -13,16 +13,27 @@ import com.example.domain.usecase.*
 import com.example.stats.adapter.MainAdapter
 import com.example.stats.adapter.RecyclerViewAdapter
 import com.example.stats.viewmodel.*
+import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+
+private const val CONNECT_TIMEOUT = 15L
+private const val WRITE_TIMEOUT = 15L
+private const val READ_TIMEOUT = 15L
+
 
 val modules = module {
 
+
     single {
+        val okHttpClient = OkHttpClient.Builder()
+            .build()
         Retrofit.Builder()
+            .client(okHttpClient)
             .baseUrl("https://www.balldontlie.io/api/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -55,11 +66,12 @@ val modules = module {
     single { GetPlayerSeasonAveragesUseCase(get()) }
     single { GetTeamListUseCase(get()) }
     single { GetGamesDataUseCase(get()) }
+    single { GetPlayerStatsUseCase(get()) }
 
     //ViewModel
     viewModel { MainViewModel() }
     viewModel { PlayerDetailViewModel(get()) }
     viewModel { SearchPlayerViewModel(get()) }
     viewModel { TeamViewModel(get()) }
-    viewModel { CalenderViewModel(get()) }
+    viewModel { CalenderViewModel(get(),get()) }
 }

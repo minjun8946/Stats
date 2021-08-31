@@ -16,4 +16,7 @@ class PlayerRepositoryImpl(
     override fun getPlayerSeasonAverages(playerSeasonId: PlayerSeasonId): Single<PlayerSeasonAveragesInfo> =
         dataSource.getPlayerSeasonAverages(playerSeasonId.toEntity()).map { it.toEntity() }
 
+    override fun getPlayerStats(gamesId: GameId): Single<PlayerStatsInfo> =
+        dataSource.getPlayerStats(gamesId.toEntity()).map { it.toEntity() }
+
 }

@@ -14,4 +14,7 @@ class PlayerServiceImpl(
 
     override fun getPlayerSeasonAverages(playerSeasonId: PlayerSeasonId): Single<Result<PlayerSeasonAveragesInfo>> =
         playerRepository.getPlayerSeasonAverages(playerSeasonId).toResult()
+
+    override fun getPlayerStats(gameId: GameId): Single<Result<PlayerStatsInfo>> =
+        playerRepository.getPlayerStats(gameId).toResult()
 }

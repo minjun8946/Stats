@@ -9,4 +9,6 @@ interface PlayerService {
     fun getAllPlayer(page : Page) : Single<Result<StatsBasicInfo>>
 
     fun getPlayerSeasonAverages(playerSeasonId : PlayerSeasonId) : Single<Result<PlayerSeasonAveragesInfo>>
+
+    fun getPlayerStats(gameId: GameId) : Single<Result<PlayerStatsInfo>>
 }

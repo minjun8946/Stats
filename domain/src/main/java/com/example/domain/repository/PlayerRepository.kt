@@ -9,4 +9,5 @@ interface PlayerRepository {
 
     fun getPlayerSeasonAverages(playerSeasonId : PlayerSeasonId) : Single<PlayerSeasonAveragesInfo>
 
+    fun getPlayerStats(gamesId: GameId) : Single<PlayerStatsInfo>
 }
