@@ -6,45 +6,45 @@ data class PlayerStats(
 
     val assist: Int,
 
-    val block: Double,
+    val block: Int,
 
-    val deffensiveRebound : Double,
+    val deffensiveRebound : Int,
 
     val threePointSuccessRate : Double,
 
-    val threePointGoalAttempted: Double,
+    val threePointGoalAttempted: Int,
 
-    val threePointGoalMade: Double,
+    val threePointGoalMade: Int,
 
     val fieldGoalSuccessRate : Double,
 
-    val fieldGoalAttempted : Double,
+    val fieldGoalAttempted : Int,
 
-    val fieldGoalMade: Double,
+    val fieldGoalMade: Int,
 
     val freeThrowSuccessRate : Double,
 
-    val freeThrowAttempted: Double,
+    val freeThrowAttempted: Int,
 
-    val freeThrowMade: Double,
+    val freeThrowMade: Int,
 
-    val gameInfo : Games,
+    val gameInfo : StatsGame,
 
-    val min: Double,
+    val minute: String?,
 
-    val offenceRebound: Double,
+    val offenceRebound: Int,
 
-    val personalFoul: Double,
+    val personalFoul: Int,
 
-    val playerInfo : Basic,
+    val playerInfo : StatsPlayer,
 
-    val points: Double,
+    val points: Int,
 
-    val rebound: Double,
+    val rebound: Int,
 
     val steal : Int,
 
-    val teamInfo: BasicTeam,
+    val teamInfo: StatsTeam,
 
     val turnover : Int
 )

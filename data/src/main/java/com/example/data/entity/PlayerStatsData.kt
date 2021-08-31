@@ -14,64 +14,64 @@ data class PlayerStatsData(
     val assist: Int,
 
     @SerializedName("blk")
-    val block: Double,
+    val block: Int,
 
     @SerializedName("dreb")
-    val deffensiveRebound: Double,
+    val deffensiveRebound: Int,
 
     @SerializedName("fg3_pct")
     val threePointSuccessRate: Double,
 
     @SerializedName("fg3a")
-    val threePointGoalAttempted: Double,
+    val threePointGoalAttempted: Int,
 
     @SerializedName("fg3m")
-    val threePointGoalMade: Double,
+    val threePointGoalMade: Int,
 
     @SerializedName("fg_pct")
     val fieldGoalSuccessRate: Double,
 
     @SerializedName("fga")
-    val fieldGoalAttempted: Double,
+    val fieldGoalAttempted: Int,
 
     @SerializedName("fgm")
-    val fieldGoalMade: Double,
+    val fieldGoalMade: Int,
 
     @SerializedName("ft_pct")
     val freeThrowSuccessRate: Double,
 
     @SerializedName("fta")
-    val freeThrowAttempted: Double,
+    val freeThrowAttempted: Int,
 
     @SerializedName("ftm")
-    val freeThrowMade: Double,
+    val freeThrowMade: Int,
 
     @SerializedName("game")
-    val gameInfo: GamesData,
+    val gameInfo: StatsGameData,
 
     @SerializedName("min")
-    val min: Double,
+    val minute: String?,
 
     @SerializedName("oreb")
-    val offenceRebound: Double,
+    val offenceRebound: Int,
 
     @SerializedName("pf")
-    val personalFoul: Double,
+    val personalFoul: Int,
 
     @SerializedName("player")
-    val playerInfo: BasicData,
+    val playerInfo: StatsPlayerData,
 
     @SerializedName("pts")
-    val points: Double,
+    val points: Int,
 
     @SerializedName("reb")
-    val rebound: Double,
+    val rebound: Int,
 
     @SerializedName("stl")
     val steal: Int,
 
     @SerializedName("team")
-    val teamInfo: BasicTeamData,
+    val teamInfo: StatsTeamData,
 
 
     @SerializedName("turnover")
@@ -94,7 +94,7 @@ fun PlayerStatsData.toEntity() =
         freeThrowAttempted = freeThrowAttempted,
         freeThrowMade = freeThrowMade,
         gameInfo = gameInfo.toEntity(),
-        min = min,
+        minute = minute,
         offenceRebound = offenceRebound,
         personalFoul = personalFoul,
         playerInfo = playerInfo.toEntity(),
