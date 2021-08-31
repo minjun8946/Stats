@@ -1,5 +1,6 @@
 package com.example.data.base
 
+import android.net.sip.SipErrorCode.SERVER_ERROR
 import com.example.domain.base.ErrorHandler
 import com.example.domain.base.Message
 import retrofit2.HttpException
@@ -12,19 +13,19 @@ class ErrorHandlerImpl: ErrorHandler {
     override fun errorHandle(throwable: Throwable?): Message {
         return when (throwable) {
             is HttpException -> when(throwable.code()) {
-                400 -> Message.INVALID
-                401 -> Message.UNAUTHORIZED
-                404 -> Message.NOT_FOUND
-                403 -> Message.FORBIDDEN
-                406 -> Message.NOT_ACCEPTABLE
-                409 -> Message.CONFLICT
-                413 -> Message.PAYLOAD_TOO_LARGE
-                500 -> Message.SERVER_ERROR
-                520 -> Message.UNKNOWN_ERROR
-                else -> Message.UNKNOWN_ERROR
+                400 -> Message.BadRequest
+                404 -> Message.NotFound
+                406 -> Message.NotAcceptable
+                429 -> Message.TooManyRequests
+                500 -> Message.InternalServerError
+                503 -> Message.ServiceUnavailable
+                else -> Message.UnKnownError
             }
-            is ConnectException, is SocketTimeoutException, is UnknownHostException -> Message.NETWORK_ERROR
-            else -> Message.UNKNOWN_ERROR
+            is ConnectException, is SocketTimeoutException, is UnknownHostException -> Message.NetWorkError
+            else -> {
+                println(throwable.toString())
+                Message.UnKnownError
+            }
         }
     }
 
