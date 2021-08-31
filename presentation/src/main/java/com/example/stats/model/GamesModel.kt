@@ -4,6 +4,7 @@ import android.media.Image
 import com.example.domain.entity.Games
 import com.example.domain.entity.HomeTeam
 import com.example.stats.R
+import java.io.Serializable
 
 data class GamesModel(
     val gameId : Int,
@@ -13,7 +14,7 @@ data class GamesModel(
     val postSeason : Boolean,
     val homeTeam : HomeTeamModel,
     val visitorTeam : VisitorTeamModel
-)
+) : Serializable
 
 fun Games.toEntity() =
     GamesModel(
