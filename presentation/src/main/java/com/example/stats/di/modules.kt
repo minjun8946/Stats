@@ -1,10 +1,12 @@
 package com.example.stats.di
 
+import com.example.data.base.ErrorHandlerImpl
 import com.example.data.datasource.*
 import com.example.data.remote.ApiService
 import com.example.data.repository.GamesRepositoryImpl
 import com.example.data.repository.PlayerRepositoryImpl
 import com.example.data.repository.TeamRepositoryImpl
+import com.example.domain.base.ErrorHandler
 import com.example.domain.repository.GamesRepository
 import com.example.domain.repository.PlayerRepository
 import com.example.domain.repository.TeamRepository
@@ -42,6 +44,8 @@ val modules = module {
 
     single<ApiService> { get<Retrofit>().create(ApiService::class.java) }
 
+    single<ErrorHandler>{ ErrorHandlerImpl() }
+
     //adapter
     single { MainAdapter(get()) }
     single { RecyclerViewAdapter() }
@@ -57,9 +61,9 @@ val modules = module {
     single<GamesRepository>{ GamesRepositoryImpl(get()) }
 
     //Service
-    single <PlayerService>{ PlayerServiceImpl(get()) }
-    single <TeamService>{ TeamServiceImpl(get()) }
-    single <GamesService>{ GamesServiceImpl(get()) }
+    single <PlayerService>{ PlayerServiceImpl(get(),get()) }
+    single <TeamService>{ TeamServiceImpl(get(),get()) }
+    single <GamesService>{ GamesServiceImpl(get(),get()) }
 
     //UseCase
     single { GetAllPlayerUseCase(get()) }
@@ -73,5 +77,6 @@ val modules = module {
     viewModel { PlayerDetailViewModel(get()) }
     viewModel { SearchPlayerViewModel(get()) }
     viewModel { TeamViewModel(get()) }
-    viewModel { CalenderViewModel(get(),get()) }
+    viewModel { CalenderViewModel(get()) }
+    viewModel { StatsViewModel(get()) }
 }
