@@ -35,7 +35,7 @@ class CalenderViewModel(
             override fun onSuccess(t: Result<GamesInfo>) {
                 when(t){
                     is Result.Success -> {
-                        gamesData = t.response.data.map { it.toEntity() } as ArrayList<GamesModel>
+                        gamesData = t.response.data.filter { it.visitorTeamScore != 0 }.map { it.toEntity() } as ArrayList<GamesModel>
                         gameListAdapter.changeData(gamesData.map { it.toRecyclerItem() })
                     }
                     is Result.Error -> println(t.response)
@@ -55,5 +55,4 @@ class CalenderViewModel(
             variableId = BR.repo,
             layoutId = R.layout.item_game_list
         )
-
 }
