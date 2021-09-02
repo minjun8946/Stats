@@ -4,6 +4,8 @@ import com.example.domain.entity.Games
 import com.google.gson.annotations.SerializedName
 
 data class GamesData(
+    @SerializedName("date")
+    val gameDate : String,
     @SerializedName("id")
     val gameId : Int,
     @SerializedName("home_team_score")
@@ -22,6 +24,7 @@ data class GamesData(
 
 fun GamesData.toEntity() =
     Games(
+        gameDate = gameDate,
         gameId = gameId,
         homeTeamScore = homeTeamScore,
         visitorTeamScore = visitorTeamScore,

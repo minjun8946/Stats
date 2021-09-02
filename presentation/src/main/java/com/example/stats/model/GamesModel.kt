@@ -1,12 +1,10 @@
 package com.example.stats.model
 
-import android.media.Image
 import com.example.domain.entity.Games
-import com.example.domain.entity.HomeTeam
-import com.example.stats.R
 import java.io.Serializable
 
 data class GamesModel(
+    val gameDate : String,
     val gameId : Int,
     val homeTeamScore : String,
     val visitorTeamScore : String,
@@ -18,6 +16,7 @@ data class GamesModel(
 
 fun Games.toEntity() =
     GamesModel(
+        gameDate = gameDate.substring(0,10),
         gameId = gameId,
         homeTeamScore = "$homeTeamScore",
         visitorTeamScore = "$visitorTeamScore",
@@ -29,6 +28,10 @@ fun Games.toEntity() =
 
 fun status(period : Int) :String{
     return when(period){
+        0 -> "Final"
+        1 -> "Final"
+        2 -> "Final"
+        3 -> "Final"
         4 -> "Final"
         5 -> "Final/OT"
         else -> "Final/${period-4}OT"
