@@ -1,5 +1,6 @@
 package com.example.stats.ui
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.stats.R
@@ -21,9 +22,21 @@ class StatsActivity : BaseActivity<ActivityStatsBinding, BaseViewModel>() {
     override fun init() {
         val basicData = intent.getSerializableExtra("gameData") as GamesModel
         getStats(basicData)
+        getGamesModel(basicData)
     }
 
-    fun getStats(gamesModel: GamesModel){
+    private fun getStats(gamesModel: GamesModel){
         viewModel.getStats(GameIdModel(gamesModel.gameId,100))
+    }
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun getGamesModel(gamesModel: GamesModel){
+        binding.homeTeamImage.setImageDrawable(resources.getDrawable(gamesModel.homeTeam.homeTeamId))
+        binding.homeTeamText.text = gamesModel.homeTeam.homeCityName
+        binding.homeTeamScore.text = gamesModel.homeTeamScore
+        binding.gameDate.text = gamesModel.gameDate
+        binding.status.text = gamesModel.period
+        binding.visitorTeamImage.setImageDrawable(resources.getDrawable(gamesModel.visitorTeam.visitorId))
+        binding.visitorTeamText.text = gamesModel.visitorTeam.visitorCityName
+        binding.visitorScore.text = gamesModel.visitorTeamScore
     }
 }

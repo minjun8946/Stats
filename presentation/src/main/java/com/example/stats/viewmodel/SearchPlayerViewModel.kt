@@ -55,7 +55,6 @@ class SearchPlayerViewModel(
     }
 
     fun onSearchClick() {
-        println("click")
         searchPlayerAdapter.clearData()
         page = 1
         searchEvent.setValue(Unit)
@@ -65,6 +64,5 @@ class SearchPlayerViewModel(
             data = this,
             variableId = BR.repo,
             layoutId = R.layout.item_player
-
         )
 }
