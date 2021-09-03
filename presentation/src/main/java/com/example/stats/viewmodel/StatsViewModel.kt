@@ -36,8 +36,8 @@ class StatsViewModel(
                                 t.response.data.filter { it.minute != "0:00" && it.minute != null }
                                     .map { it.toEntity() } as ArrayList<StatsModel>
                             if (gameStatsModel[0].gameInfo.homeTeamId > gameStatsModel[0].gameInfo.visitorTeamId)
-                                gameStatsModel.sortByDescending { it.playerInfo.teamId }
-                            else gameStatsModel.sortBy { it.playerInfo.teamId }
+                                gameStatsModel.sortByDescending { it.teamInfo.teamId }
+                            else gameStatsModel.sortBy { it.teamInfo.teamId }
                             statsAdapter.addData(gameStatsModel.map { it.toRecyclerItem() })
                         }
                         is Result.Error -> {
