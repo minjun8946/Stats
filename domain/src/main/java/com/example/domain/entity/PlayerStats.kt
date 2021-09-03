@@ -1,5 +1,7 @@
 package com.example.domain.entity
 
+import java.io.Serializable
+
 data class PlayerStats(
 
     val gamesId: Int,
@@ -47,4 +49,4 @@ data class PlayerStats(
     val teamInfo: StatsTeam,
 
     val turnover : Int
-)
+) : Serializable
