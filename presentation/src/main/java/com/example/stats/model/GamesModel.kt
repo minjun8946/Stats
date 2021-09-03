@@ -1,6 +1,9 @@
 package com.example.stats.model
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.domain.entity.Games
+import com.example.stats.base.koreanDay
 import java.io.Serializable
 
 data class GamesModel(
@@ -14,9 +17,10 @@ data class GamesModel(
     val visitorTeam : VisitorTeamModel
 ) : Serializable
 
+@RequiresApi(Build.VERSION_CODES.O)
 fun Games.toEntity() =
     GamesModel(
-        gameDate = gameDate.substring(0,10),
+        gameDate = koreanDay(gameDate.substring(0,10)),
         gameId = gameId,
         homeTeamScore = "$homeTeamScore",
         visitorTeamScore = "$visitorTeamScore",
