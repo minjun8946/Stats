@@ -79,4 +79,5 @@ val modules = module {
     viewModel { TeamViewModel(get()) }
     viewModel { CalenderViewModel(get()) }
     viewModel { StatsViewModel(get()) }
+    viewModel { GameStatsDetailViewModel() }
 }
