@@ -1,8 +1,19 @@
 package com.example.stats.base
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.domain.base.Message
 import com.example.domain.base.Result
 import com.example.stats.R
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun koreanDay(dateString : String) : String{
+    val date = LocalDate.parse(dateString, DateTimeFormatter.ISO_DATE)
+    return "${date.plusDays(1)}"
+}
 
 fun teamImage(teamId : Int) : Int{
     return when(teamId){
