@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stats.R
 import com.example.stats.model.BasicModel
 import com.example.stats.model.GamesModel
+import com.example.stats.model.StatsModel
+import com.example.stats.ui.GameStatsDetailActivity
 import com.example.stats.ui.PlayerDetailActivity
 import com.example.stats.ui.StatsActivity
 
@@ -59,6 +61,12 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingView
                 recyclerItem = getItems(position)
                 val intent = Intent(view.context, StatsActivity::class.java)
                 intent.putExtra("gameData",recyclerItem.data as GamesModel)
+                view.context.startActivity(intent)
+            }
+            if (items[position].layoutId == R.layout.item_game_player) {
+                recyclerItem = getItems(position)
+                val intent = Intent(view.context, GameStatsDetailActivity::class.java)
+                intent.putExtra("statsData",recyclerItem.data as StatsModel)
                 view.context.startActivity(intent)
             }
         }
