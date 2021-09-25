@@ -9,13 +9,14 @@ import java.io.Serializable
 data class GamesModel(
     val gameDate : String,
     val gameId : Int,
-    val homeTeamScore : String,
-    val visitorTeamScore : String,
+    var homeTeamScore : String,
+    var visitorTeamScore : String,
     val period : String,
     val postSeason : Boolean,
-    val homeTeam : HomeTeamModel,
-    val visitorTeam : VisitorTeamModel
+    var homeTeam : HomeTeamModel,
+    var visitorTeam : VisitorTeamModel
 ) : Serializable
+
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun Games.toEntity() =

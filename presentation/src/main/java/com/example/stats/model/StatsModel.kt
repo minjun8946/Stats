@@ -1,9 +1,6 @@
 package com.example.stats.model
 
 import com.example.domain.entity.PlayerStats
-import com.example.domain.entity.StatsGame
-import com.example.domain.entity.StatsPlayer
-import com.example.domain.entity.StatsTeam
 import java.io.Serializable
 
 data class StatsModel(

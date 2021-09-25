@@ -1,6 +1,5 @@
 package com.example.data.base
 
-import android.net.sip.SipErrorCode.SERVER_ERROR
 import com.example.domain.base.ErrorHandler
 import com.example.domain.base.Message
 import retrofit2.HttpException

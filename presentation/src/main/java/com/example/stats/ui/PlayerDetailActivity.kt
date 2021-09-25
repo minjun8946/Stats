@@ -1,16 +1,8 @@
 package com.example.stats.ui
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.databinding.DataBindingUtil
-import com.example.data.entity.BasicData
-import com.example.domain.entity.Basic
 import com.example.stats.R
 import com.example.stats.base.BaseActivity
-import com.example.stats.base.teamImage
 import com.example.stats.databinding.ActivityPlayerDetailBinding
 import com.example.stats.model.BasicModel
 import com.example.stats.model.PlayerSeasonIdModel

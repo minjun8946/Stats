@@ -1,12 +1,5 @@
 package com.example.stats.ui
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.example.stats.R
 import com.example.stats.base.BaseFragment
 import com.example.stats.databinding.FragmentSearchPlayerBinding
@@ -20,12 +13,13 @@ class SearchPlayerFragment : BaseFragment<FragmentSearchPlayerBinding, SearchPla
     override val viewModel: SearchPlayerViewModel by viewModel()
     override val layoutId = R.layout.fragment_search_player
 
-
     override fun init() {
         getAllPlayer()
         scrollListenerEvent()
         search()
     }
+
+
 
     private fun search() {
         viewModel.searchEvent.observe(this, {
@@ -38,6 +32,8 @@ class SearchPlayerFragment : BaseFragment<FragmentSearchPlayerBinding, SearchPla
             getAllPlayer()
         })
     }
+
+
 
     private fun getAllPlayer() {
         val text = binding.searchEdittext.text.toString()

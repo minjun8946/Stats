@@ -1,7 +1,6 @@
 package com.example.domain.base
 
 enum class Message {
-    // network message
     BadRequest,
     NotFound,
     NotAcceptable ,

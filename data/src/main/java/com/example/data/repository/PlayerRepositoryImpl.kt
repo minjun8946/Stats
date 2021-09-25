@@ -6,7 +6,6 @@ import com.example.domain.entity.*
 import com.example.domain.repository.PlayerRepository
 import io.reactivex.Single
 
-
 class PlayerRepositoryImpl(
     private val dataSource : PlayerDataSource
 ) : PlayerRepository {

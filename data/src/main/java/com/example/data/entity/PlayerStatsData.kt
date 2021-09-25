@@ -1,7 +1,5 @@
 package com.example.data.entity
 
-import com.example.domain.entity.BasicPlayer
-import com.example.domain.entity.BasicTeam
 import com.example.domain.entity.PlayerStats
 import com.google.gson.annotations.SerializedName
 

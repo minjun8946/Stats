@@ -15,6 +15,7 @@ import com.example.stats.model.StatsModel
 import com.example.stats.ui.GameStatsDetailActivity
 import com.example.stats.ui.PlayerDetailActivity
 import com.example.stats.ui.StatsActivity
+import com.example.stats.ui.TeamGameListActivity
 
 class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingViewHolder>() {
 
@@ -46,28 +47,34 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingView
         onClick(holder.itemView, position)
         getItems(position).bind(holder.binding)
         holder.binding.executePendingBindings()
-
     }
 
     private fun onClick(view: View, position: Int) {
         view.setOnClickListener {
-            if (items[position].layoutId == R.layout.item_player) {
-                recyclerItem = getItems(position)
-                val intent = Intent(view.context, PlayerDetailActivity::class.java)
-                intent.putExtra("data", recyclerItem.data as BasicModel)
+            when (items[position].layoutId) {
+                R.layout.item_player -> {
+                    recyclerItem = getItems(position)
+                    val intent = Intent(view.context, PlayerDetailActivity::class.java)
+                    intent.putExtra("data", recyclerItem.data as BasicModel)
                     view.context.startActivity(intent)
-            }
-            if (items[position].layoutId == R.layout.item_game_list) {
-                recyclerItem = getItems(position)
-                val intent = Intent(view.context, StatsActivity::class.java)
-                intent.putExtra("gameData",recyclerItem.data as GamesModel)
-                view.context.startActivity(intent)
-            }
-            if (items[position].layoutId == R.layout.item_game_player) {
-                recyclerItem = getItems(position)
-                val intent = Intent(view.context, GameStatsDetailActivity::class.java)
-                intent.putExtra("statsData",recyclerItem.data as StatsModel)
-                view.context.startActivity(intent)
+                }
+                R.layout.item_game_list -> {
+                    recyclerItem = getItems(position)
+                    val intent = Intent(view.context, StatsActivity::class.java)
+                    intent.putExtra("gameData", recyclerItem.data as GamesModel)
+                    view.context.startActivity(intent)
+                }
+                R.layout.item_game_player -> {
+                    recyclerItem = getItems(position)
+                    val intent = Intent(view.context, GameStatsDetailActivity::class.java)
+                    intent.putExtra("statsData", recyclerItem.data as StatsModel)
+                    view.context.startActivity(intent)
+                }
+                R.layout.item_team -> {
+                    recyclerItem = getItems(position)
+                    val intent = Intent(view.context, TeamGameListActivity::class.java)
+                    view.context.startActivity(intent)
+                }
             }
         }
     }
@@ -77,9 +84,10 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingView
         this.items.clear()
         notifyDataSetChanged()
     }
+
     @SuppressLint("NotifyDataSetChanged")
 
-    fun changeData(newItems : List<RecyclerItem>){
+    fun changeData(newItems: List<RecyclerItem>) {
         this.items.clear()
         this.items.addAll(newItems)
         notifyDataSetChanged()
@@ -96,8 +104,7 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingView
     }
 
     inner class BindingViewHolder(
-        val binding: ViewDataBinding
+        val binding: ViewDataBinding,
     ) : RecyclerView.ViewHolder(binding.root)
-
 }
 

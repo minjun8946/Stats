@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.example.domain.base.Message
 import com.example.domain.base.Result
 import com.example.domain.base.UseCase
-import com.example.domain.usecase.GetPlayerStatsUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

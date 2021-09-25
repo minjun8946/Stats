@@ -2,10 +2,7 @@ package com.example.domain
 
 import com.example.domain.base.ErrorHandler
 import com.example.domain.base.Result
-import com.example.domain.entity.GamesInfo
-import io.reactivex.Completable
 import io.reactivex.Single
-import java.net.HttpRetryException
 
 fun <T> Single<T>.toResult(
     handler: ErrorHandler

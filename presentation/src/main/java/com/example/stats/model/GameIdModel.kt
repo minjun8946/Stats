@@ -1,6 +1,5 @@
 package com.example.stats.model
 
-import android.view.inspector.IntFlagMapping
 import com.example.domain.entity.GameId
 
 data class GameIdModel(

@@ -25,7 +25,11 @@ interface ApiService {
 
     @GET("games")
     fun getGameData(
-        @Query("dates[]") date : String
+        @Query("dates[]") date : String?,
+        @Query("seasons[]") season : Int?,
+        @Query("team_ids[]") teamId : Int?,
+        @Query("page") page : Int,
+        @Query("per_page") perPage: Int,
     ) : Single<GamesInfoData>
 
     @GET("stats")

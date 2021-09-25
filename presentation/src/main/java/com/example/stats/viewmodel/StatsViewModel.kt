@@ -1,6 +1,5 @@
 package com.example.stats.viewmodel
 
-import android.widget.BaseAdapter
 import com.example.domain.base.Result
 import com.example.domain.entity.PlayerStatsInfo
 import com.example.domain.usecase.GetPlayerStatsUseCase
@@ -9,7 +8,6 @@ import com.example.stats.R
 import com.example.stats.adapter.RecyclerItem
 import com.example.stats.adapter.RecyclerViewAdapter
 import com.example.stats.base.BaseViewModel
-import com.example.stats.model.BasicModel
 import com.example.stats.model.GameIdModel
 import com.example.stats.model.StatsModel
 import com.example.stats.model.toEntity

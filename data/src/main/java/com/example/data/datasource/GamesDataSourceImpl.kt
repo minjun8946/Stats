@@ -10,7 +10,11 @@ class GamesDataSourceImpl(
 ) : GamesDataSource {
     override fun getGamesData(date: DateData): Single<GamesInfoData> =
         apiService.getGameData(
-            date = date.date
+            date = date.date,
+            season = date.season,
+            teamId = date.teamId,
+            page = date.page,
+            perPage = date.perPage,
         )
 
 }

@@ -5,32 +5,35 @@ import androidx.annotation.RequiresApi
 import com.example.domain.base.Result
 import com.example.domain.entity.GamesInfo
 import com.example.domain.usecase.GetGamesDataUseCase
+import com.example.domain.usecase.GetTeamListUseCase
 import com.example.stats.BR
 import com.example.stats.R
 import com.example.stats.adapter.RecyclerItem
 import com.example.stats.adapter.RecyclerViewAdapter
 import com.example.stats.base.BaseViewModel
-import com.example.stats.model.DateModel
-import com.example.stats.model.GamesModel
-import com.example.stats.model.toEntity
+import com.example.stats.model.*
 import io.reactivex.observers.DisposableSingleObserver
 
-class CalenderViewModel(
-    private val getGamesDataUseCase : GetGamesDataUseCase,
+class TeamGameListViewModel(
+    private val getGamesDataUseCase: GetGamesDataUseCase,
 ) : BaseViewModel() {
 
     var gamesData = ArrayList<GamesModel>()
     var gameListAdapter = RecyclerViewAdapter()
 
-    fun getGamesData(date : DateModel){
+    fun getTeamGamesData(date: DateModel) {
 
-        val disposableObserver = object : DisposableSingleObserver<Result<GamesInfo>>(){
+        val disposableObserver = object : DisposableSingleObserver<Result<GamesInfo>>() {
 
             @RequiresApi(Build.VERSION_CODES.O)
             override fun onSuccess(t: Result<GamesInfo>) {
-                when(t){
+                when (t) {
                     is Result.Success -> {
-                        gamesData = t.response.data.filter { it.visitorTeamScore != 0 }.map { it.toEntity() } as ArrayList<GamesModel>
+                        println(t.response.data)
+                        gamesData = t.response.data.filter { it.visitorTeamScore != 0 }
+                            .map { it.toEntity() } as ArrayList<GamesModel>
+                        gamesData.sortBy { it.gameDate }
+
                         gameListAdapter.changeData(gamesData.map { it.toRecyclerItem() })
                     }
                     is Result.Error -> println(t.response)
@@ -42,8 +45,9 @@ class CalenderViewModel(
             }
         }
 
-        execute(date.toEntity(),disposableObserver,getGamesDataUseCase)
+        execute(date.toEntity(), disposableObserver, getGamesDataUseCase)
     }
+
     fun GamesModel.toRecyclerItem() =
         RecyclerItem(
             data = this,

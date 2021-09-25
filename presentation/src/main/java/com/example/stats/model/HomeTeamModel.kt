@@ -9,6 +9,12 @@ data class HomeTeamModel(
     val homeCityName : String
 ) : Serializable
 
+fun HomeTeamModel.toVisitorTeamModel() =
+    VisitorTeamModel(
+        visitorCityName = homeCityName,
+        visitorId = homeTeamId
+    )
+
 fun HomeTeam.toEntity() =
     HomeTeamModel(
         homeTeamId = teamImage(homeTeamId),

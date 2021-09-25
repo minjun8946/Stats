@@ -1,9 +1,7 @@
 package com.example.stats.viewmodel
 
 import com.example.domain.base.Result
-import com.example.domain.entity.PlayerStatsInfo
 import com.example.domain.entity.TeamBasicInfo
-import com.example.domain.usecase.GetPlayerStatsUseCase
 import com.example.domain.usecase.GetTeamListUseCase
 import com.example.stats.BR
 import com.example.stats.R
@@ -13,7 +11,6 @@ import com.example.stats.base.BaseViewModel
 import com.example.stats.model.BasicTeamModel
 import com.example.stats.model.toEntity
 import io.reactivex.observers.DisposableSingleObserver
-import retrofit2.HttpException
 
 class TeamViewModel(
     private val getTeamListUseCase: GetTeamListUseCase,

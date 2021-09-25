@@ -2,8 +2,6 @@ package com.example.stats.base
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.example.domain.base.Message
-import com.example.domain.base.Result
 import com.example.stats.R
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
