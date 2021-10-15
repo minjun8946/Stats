@@ -3,6 +3,7 @@ package com.example.stats.viewmodel
 import com.example.domain.base.Result
 import com.example.domain.entity.StatsBasicInfo
 import com.example.domain.usecase.GetAllPlayerUseCase
+import com.example.domain.usecase.GetPlayerStatsUseCase
 import com.example.stats.BR
 import com.example.stats.R
 import com.example.stats.adapter.RecyclerItem

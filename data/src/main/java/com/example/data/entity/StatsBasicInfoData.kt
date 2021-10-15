@@ -12,6 +12,3 @@ fun StatsBasicInfoData.toEntity() =
         data = data.map { it.toEntity() },
         meta = meta.toEntity()
     )
-
-
-

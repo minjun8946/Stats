@@ -44,5 +44,4 @@ class TeamViewModel(
             variableId = BR.repo,
             layoutId = R.layout.item_team
         )
-
 }

@@ -16,6 +16,6 @@ class GamesServiceImpl(
         gamesRepository.getGamesData(date).toResult(
             handler = handler,
             getLocalDataFun = { gamesRepository.getGamesData(date).blockingGet()},
-            saveLocalFun = { T -> gamesRepository.getGamesData(date)}
+            saveLocalFun = { gamesRepository.getGamesData(date)}
         )
 }
