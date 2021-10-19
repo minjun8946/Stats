@@ -16,7 +16,7 @@ data class StatsTeamModel(
 
 fun StatsTeam.toEntity() =
     StatsTeamModel(
-        teamId = teamImage(teamId),
+        teamId = teamId,
         abbreviation = abbreviation,
         city = city,
         conference = conference,

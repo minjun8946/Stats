@@ -17,6 +17,6 @@ fun HomeTeamModel.toVisitorTeamModel() =
 
 fun HomeTeam.toEntity() =
     HomeTeamModel(
-        homeTeamId = teamImage(homeTeamId),
+        homeTeamId = homeTeamId,
         homeCityName = homeCityName
     )

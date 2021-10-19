@@ -23,7 +23,7 @@ fun Basic.toBasicModel() : BasicModel =
         position= position,
         height = "${changeHeight(height_feet,height_inches)}cm",
         pounds = "${changePounds(weight_pounds)}kg",
-        teamId = teamImage(teamId),
+        teamId = teamId,
         teamName = teamName
     )
 

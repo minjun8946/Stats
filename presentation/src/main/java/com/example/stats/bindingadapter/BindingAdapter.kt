@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.stats.adapter.RecyclerViewAdapter
 import com.example.stats.base.SingleLiveEvent
+import com.example.stats.base.teamImage
 
 
 @BindingAdapter("recyclerView")
@@ -17,7 +18,8 @@ fun RecyclerView.setRecyclerAdapter(adapter: RecyclerViewAdapter) {
 
 @BindingAdapter("imageBinding")
 fun ImageView.imageBinding(resId: Int) {
-    setImageResource(resId)
+    val imageId = teamImage(resId)
+    setImageResource(imageId)
 }
 
 @BindingAdapter("scrollListener")

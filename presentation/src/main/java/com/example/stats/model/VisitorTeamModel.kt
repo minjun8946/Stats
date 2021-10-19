@@ -11,7 +11,7 @@ data class VisitorTeamModel(
 
 fun VisitorTeam.toEntity() =
     VisitorTeamModel(
-        visitorId = teamImage(visitorId),
+        visitorId = visitorId,
         visitorCityName = visitorCityName
     )
 

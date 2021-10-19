@@ -15,6 +15,6 @@ fun StatsPlayer.toEntity() =
     StatsPlayerModel(
         playerId = playerId,
         teamName = lastName,
-        teamId = teamImage(teamId.toInt()),
+        teamId = teamId.toInt(),
         position = position
     )
