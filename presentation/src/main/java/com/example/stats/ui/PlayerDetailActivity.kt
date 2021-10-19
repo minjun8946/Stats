@@ -3,6 +3,7 @@ package com.example.stats.ui
 import android.annotation.SuppressLint
 import com.example.stats.R
 import com.example.stats.base.BaseActivity
+import com.example.stats.base.teamImage
 import com.example.stats.databinding.ActivityPlayerDetailBinding
 import com.example.stats.model.BasicModel
 import com.example.stats.model.PlayerSeasonIdModel
@@ -34,7 +35,7 @@ class PlayerDetailActivity : BaseActivity<ActivityPlayerDetailBinding, PlayerDet
         binding.height.text = basicData.height
         binding.weight.text = basicData.pounds
         binding.teamName.text = basicData.teamName
-        binding.detailTeamImage.setImageDrawable(resources.getDrawable(basicData.teamId))
+        binding.detailTeamImage.setImageDrawable(resources.getDrawable(teamImage(basicData.teamId)))
     }
 
 }

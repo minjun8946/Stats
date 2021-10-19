@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import com.example.stats.R
 import com.example.stats.base.BaseActivity
 import com.example.stats.base.BaseViewModel
+import com.example.stats.base.teamImage
 import com.example.stats.databinding.ActivityStatsBinding
 import com.example.stats.model.GameIdModel
 import com.example.stats.model.GamesModel
@@ -26,12 +27,12 @@ class StatsActivity : BaseActivity<ActivityStatsBinding, BaseViewModel>() {
     }
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun getGamesModel(gamesModel: GamesModel){
-        binding.homeTeamImage.setImageDrawable(resources.getDrawable(gamesModel.homeTeam.homeTeamId))
+        binding.homeTeamImage.setImageDrawable(resources.getDrawable(teamImage(gamesModel.homeTeam.homeTeamId)))
         binding.homeTeamText.text = gamesModel.homeTeam.homeCityName
         binding.homeTeamScore.text = gamesModel.homeTeamScore
         binding.gameDate.text = gamesModel.gameDate
         binding.status.text = gamesModel.period
-        binding.visitorTeamImage.setImageDrawable(resources.getDrawable(gamesModel.visitorTeam.visitorId))
+        binding.visitorTeamImage.setImageDrawable(resources.getDrawable(teamImage(gamesModel.visitorTeam.visitorId)))
         binding.visitorTeamText.text = gamesModel.visitorTeam.visitorCityName
         binding.visitorScore.text = gamesModel.visitorTeamScore
     }

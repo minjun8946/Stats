@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.stats.R
 import com.example.stats.base.BaseActivity
+import com.example.stats.base.teamImage
 import com.example.stats.databinding.ActivityGameStatsDetailBinding
 import com.example.stats.model.StatsModel
 import com.example.stats.viewmodel.GameStatsDetailViewModel
@@ -23,7 +24,7 @@ class GameStatsDetailActivity :
     @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
     fun inputStatsData(data : StatsModel){
         binding.position.text = data.playerInfo.position
-        binding.teamImage.setImageDrawable(resources.getDrawable(data.teamInfo.teamId))
+        binding.teamImage.setImageDrawable(resources.getDrawable(teamImage(data.teamInfo.teamId)))
         binding.playerName.text = data.playerInfo.teamName
         binding.gameDate.text = data.gameInfo.gameDate
         binding.assist.text = "AST\n${data.assist.split(" ")[1]}"
