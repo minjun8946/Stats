@@ -8,14 +8,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.entity.TeamBasicInfo
 import com.example.stats.R
 import com.example.stats.model.BasicModel
+import com.example.stats.model.BasicTeamModel
 import com.example.stats.model.GamesModel
 import com.example.stats.model.StatsModel
 import com.example.stats.ui.GameStatsDetailActivity
 import com.example.stats.ui.PlayerDetailActivity
 import com.example.stats.ui.StatsActivity
 import com.example.stats.ui.TeamGameListActivity
+import com.example.stats.viewmodel.TeamGameListViewModel
 
 class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingViewHolder>() {
 
@@ -73,6 +76,7 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingView
                 R.layout.item_team -> {
                     recyclerItem = getItems(position)
                     val intent = Intent(view.context, TeamGameListActivity::class.java)
+                    intent.putExtra("teamData",recyclerItem.data as BasicTeamModel)
                     view.context.startActivity(intent)
                 }
             }

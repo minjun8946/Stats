@@ -2,6 +2,7 @@ package com.example.stats.model
 
 import com.example.domain.entity.BasicTeam
 import com.example.stats.base.teamImage
+import java.io.Serializable
 
 data class BasicTeamModel(
     val teamId : Int,
@@ -9,11 +10,11 @@ data class BasicTeamModel(
     val city : String,
     val conference : String,
     val division : String
-)
+) : Serializable
 
 fun BasicTeam.toEntity() =
     BasicTeamModel(
-        teamId = teamImage(teamId),
+        teamId = teamId,
         teamName = teamName,
         city = city,
         conference = conference,
