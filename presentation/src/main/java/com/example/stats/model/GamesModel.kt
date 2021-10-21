@@ -11,7 +11,9 @@ data class GamesModel(
     val gameId : Int,
     var homeTeamScore : String,
     var visitorTeamScore : String,
-    val period : String,
+    val season : String,
+    val period : Int,
+    val status : String,
     val postSeason : Boolean,
     var homeTeam : HomeTeamModel,
     var visitorTeam : VisitorTeamModel
@@ -25,20 +27,20 @@ fun Games.toEntity() =
         gameId = gameId,
         homeTeamScore = "$homeTeamScore",
         visitorTeamScore = "$visitorTeamScore",
-        period = status(period),
+        season = "$season - ${season+1}",
+        period = period,
+        status = overTime(period, status),
         postSeason = postSeason,
         homeTeam = homeTeam.toEntity(),
         visitorTeam = visitorTeam.toEntity()
     )
 
-fun status(period : Int) :String{
+fun overTime(period : Int, status: String) : String{
     return when(period){
-        0 -> "Final"
-        1 -> "Final"
-        2 -> "Final"
-        3 -> "Final"
-        4 -> "Final"
-        5 -> "Final/OT"
-        else -> "Final/${period-4}OT"
+        0,1,2,3,4 -> status
+        else ->{
+            if(status != "Final") "OT${period-4} Qtr"
+            else "Final/OT${period-4}"
+        }
     }
 }
