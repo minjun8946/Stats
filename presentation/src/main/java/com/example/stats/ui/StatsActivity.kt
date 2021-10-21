@@ -31,7 +31,7 @@ class StatsActivity : BaseActivity<ActivityStatsBinding, BaseViewModel>() {
         binding.homeTeamText.text = gamesModel.homeTeam.homeCityName
         binding.homeTeamScore.text = gamesModel.homeTeamScore
         binding.gameDate.text = gamesModel.gameDate
-        binding.status.text = gamesModel.period
+        binding.status.text = gamesModel.status
         binding.visitorTeamImage.setImageDrawable(resources.getDrawable(teamImage(gamesModel.visitorTeam.visitorId)))
         binding.visitorTeamText.text = gamesModel.visitorTeam.visitorCityName
         binding.visitorScore.text = gamesModel.visitorTeamScore
