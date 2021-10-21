@@ -1,21 +1,47 @@
 package com.example.stats.ui
 
+import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
+import com.example.data.entity.BasicTeamData
 import com.example.stats.R
 import com.example.stats.base.BaseActivity
 import com.example.stats.databinding.ActivityGameStatsDetailBinding
+import com.example.stats.databinding.ActivityTeamGameListBinding
 import com.example.stats.model.BasicTeamModel
 import com.example.stats.model.DateModel
 import com.example.stats.viewmodel.TeamGameListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.time.LocalDate
 
 class TeamGameListActivity(
-) : BaseActivity<ActivityGameStatsDetailBinding, TeamGameListViewModel>() {
-    override val layoutId =  R.layout.activity_team_game_list
+) : BaseActivity<ActivityTeamGameListBinding, TeamGameListViewModel>() {
+    override val layoutId = R.layout.activity_team_game_list
     override val viewModel: TeamGameListViewModel by viewModel()
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    var teamYear = LocalDate.now().year
 
     override fun init() {
         val teamData = intent.getSerializableExtra("teamData") as BasicTeamModel
-        viewModel.getTeamGamesData(DateModel(null,2020,teamData.teamId,0,100))
+        getTeamGameData(teamData)
+        binding.plusYearBtn.setOnClickListener {
+            teamYear++
+            getTeamGameData(teamData)
+        }
+
+        binding.minusYearBtn.setOnClickListener {
+            teamYear--
+            getTeamGameData(teamData)
+        }
     }
 
+    private fun setYear(year : Int) {
+        binding.teamYearTv.text =  "$year - ${year+1}"
+    }
+
+    private fun getTeamGameData(teamData: BasicTeamModel) {
+        viewModel.getTeamGamesData(DateModel(null, teamYear, teamData.teamId, 0, 100))
+        setYear(teamYear)
+    }
 }
