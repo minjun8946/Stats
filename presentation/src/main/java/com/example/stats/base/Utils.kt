@@ -6,7 +6,6 @@ import com.example.stats.R
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-
 @RequiresApi(Build.VERSION_CODES.O)
 fun koreanDay(dateString : String) : String{
     val date = LocalDate.parse(dateString, DateTimeFormatter.ISO_DATE)

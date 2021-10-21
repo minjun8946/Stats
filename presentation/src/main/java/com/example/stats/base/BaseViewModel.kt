@@ -35,14 +35,14 @@ open class BaseViewModel : ViewModel(){
             when (result.message) {
 
                 Message.UnKnownError -> println("알수없는 오류가 발생했습니다 ${result.message.ordinal}")
-                Message.NetWorkError -> println("네트워크 오류가 발생했습니다 ")
-                else ->println("알 수 없는 오류 발")
+                Message.NetWorkError -> println("네트워크 오류가 발생했습니다")
+                else ->println("알 수 없는 오류 발생했습니다")
             }
         } else {
             when (result.message) {
                 Message.UnKnownError -> println("알수없는 오류가 발생했습니다 ${result.message.ordinal}")
-                Message.NetWorkError -> println("네트워크 오류가 발생했습니다 ")
-                else ->println("알 수 없는 오류 발")
+                Message.NetWorkError -> println("네트워크 오류가 발생했습니다")
+                else ->println("알 수 없는 오류 발생했습니다")
             }
         }
     }
