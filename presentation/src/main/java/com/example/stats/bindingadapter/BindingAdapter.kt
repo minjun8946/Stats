@@ -1,6 +1,8 @@
 package com.example.stats.bindingadapter
 
 import android.widget.ImageView
+import androidx.core.view.isNotEmpty
+import androidx.core.view.size
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,7 +30,9 @@ fun RecyclerView.scrollListener(scrollListener: SingleLiveEvent<Unit>) {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
             if (!recyclerView.canScrollVertically(1)) {
-                scrollListener.setValue(Unit)
+                if(recyclerView.size > 6){
+                    scrollListener.setValue(Unit)
+                }
             }
         }
     })
