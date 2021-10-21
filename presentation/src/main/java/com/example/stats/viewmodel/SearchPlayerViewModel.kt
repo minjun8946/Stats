@@ -29,14 +29,14 @@ class SearchPlayerViewModel(
     val searchEvent = SingleLiveEvent<Unit>()
 
     fun getAllPlayer(pageModel: PageModel) {
-
         val disposableSingleObserver = object : DisposableSingleObserver<Result<StatsBasicInfo>>() {
             override fun onSuccess(result: Result<StatsBasicInfo>) {
                 when (result) {
                     is Result.Success -> {
                         basicModel = result.response.data.map { it.toBasicModel() } as ArrayList<BasicModel>
                         searchPlayerAdapter.addData(basicModel.map { it.toRecyclerItem() })
-
+                        basicModel.clear()
+                        println("실행")
                         page = when (result.response.meta.page) {
                             null -> ++page
                             else -> result.response.meta.page!!
