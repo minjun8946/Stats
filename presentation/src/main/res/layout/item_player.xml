@@ -11,15 +11,13 @@
         android:id="@+id/main_item"
         android:layout_width="match_parent"
         android:background="@drawable/recycler_bottom_line"
-        android:layout_height="60dp"
-        android:layout_marginBottom="10dp">
+        android:layout_height="60dp">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginBottom="8dp"
             android:text="@{repo.name}"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -33,25 +31,21 @@
             android:id="@+id/height"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="2dp"
             android:text="@{repo.height}"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/weight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
             tools:text="200cm" />
 
         <TextView
             android:id="@+id/weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="8dp"
             android:text="@{repo.pounds}"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -66,7 +60,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
-            android:layout_marginBottom="8dp"
             android:text="@{repo.position}"
             android:textColor="@color/black"
             android:textSize="14sp"
