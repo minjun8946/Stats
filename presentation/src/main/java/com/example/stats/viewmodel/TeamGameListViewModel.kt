@@ -5,7 +5,6 @@ import androidx.annotation.RequiresApi
 import com.example.domain.base.Result
 import com.example.domain.entity.GamesInfo
 import com.example.domain.usecase.GetGamesDataUseCase
-import com.example.domain.usecase.GetTeamListUseCase
 import com.example.stats.BR
 import com.example.stats.R
 import com.example.stats.adapter.RecyclerItem
@@ -24,7 +23,6 @@ class TeamGameListViewModel(
     fun getTeamGamesData(date: DateModel) {
 
         val disposableObserver = object : DisposableSingleObserver<Result<GamesInfo>>() {
-
             @RequiresApi(Build.VERSION_CODES.O)
             override fun onSuccess(t: Result<GamesInfo>) {
                 when (t) {
@@ -33,18 +31,15 @@ class TeamGameListViewModel(
                         gamesData = t.response.data.filter { it.visitorTeamScore != 0 }
                             .map { it.toEntity() } as ArrayList<GamesModel>
                         gamesData.sortBy { it.gameDate }
-
                         gameListAdapter.changeData(gamesData.map { it.toRecyclerItem() })
                     }
                     is Result.Error -> println(t.response)
                 }
             }
-
             override fun onError(e: Throwable) {
                 println("Error")
             }
         }
-
         execute(date.toEntity(), disposableObserver, getGamesDataUseCase)
     }
 

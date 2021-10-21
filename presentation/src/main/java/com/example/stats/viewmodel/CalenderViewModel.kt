@@ -32,6 +32,7 @@ class CalenderViewModel(
                     is Result.Success -> {
                         gamesData = t.response.data.filter { it.visitorTeamScore != 0 }.map { it.toEntity() } as ArrayList<GamesModel>
                         gameListAdapter.changeData(gamesData.map { it.toRecyclerItem() })
+                        println(gamesData)
                     }
                     is Result.Error -> println(t.response)
                 }

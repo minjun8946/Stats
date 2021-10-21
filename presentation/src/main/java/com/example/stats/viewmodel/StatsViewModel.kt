@@ -29,7 +29,6 @@ class StatsViewModel(
 
                     when (t) {
                         is Result.Success -> {
-
                             gameStatsModel =
                                 t.response.data.filter { it.minute != "0:00" && it.minute != null }
                                     .map { it.toEntity() } as ArrayList<StatsModel>

@@ -1,6 +1,8 @@
 package com.example.stats.ui
 
 import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.stats.R
 import com.example.stats.base.BaseActivity
 import com.example.stats.base.teamImage
@@ -15,6 +17,7 @@ class PlayerDetailActivity : BaseActivity<ActivityPlayerDetailBinding, PlayerDet
     override val viewModel: PlayerDetailViewModel by viewModel()
     override val layoutId: Int = R.layout.activity_player_detail
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun init() {
         val basicData = intent.getSerializableExtra("data") as BasicModel
         setBasicData(basicData)
