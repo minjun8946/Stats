@@ -2,6 +2,7 @@ package com.example.stats.ui
 
 import android.annotation.SuppressLint
 import android.os.Build
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import com.example.stats.R
 import com.example.stats.base.BaseActivity
@@ -10,11 +11,12 @@ import com.example.stats.databinding.ActivityPlayerDetailBinding
 import com.example.stats.model.BasicModel
 import com.example.stats.model.PlayerSeasonIdModel
 import com.example.stats.viewmodel.PlayerDetailViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PlayerDetailActivity : BaseActivity<ActivityPlayerDetailBinding, PlayerDetailViewModel>() {
 
-    override val viewModel: PlayerDetailViewModel by viewModel()
+    override val viewModel: PlayerDetailViewModel by viewModels()
     override val layoutId: Int = R.layout.activity_player_detail
 
     @RequiresApi(Build.VERSION_CODES.O)

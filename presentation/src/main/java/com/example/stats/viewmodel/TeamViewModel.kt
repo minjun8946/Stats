@@ -10,9 +10,12 @@ import com.example.stats.adapter.RecyclerViewAdapter
 import com.example.stats.base.BaseViewModel
 import com.example.stats.model.BasicTeamModel
 import com.example.stats.model.toEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.observers.DisposableSingleObserver
+import javax.inject.Inject
 
-class TeamViewModel(
+@HiltViewModel
+class TeamViewModel @Inject constructor(
     private val getTeamListUseCase: GetTeamListUseCase,
 ) : BaseViewModel() {
 

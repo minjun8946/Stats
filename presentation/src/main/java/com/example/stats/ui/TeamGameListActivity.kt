@@ -1,23 +1,22 @@
 package com.example.stats.ui
 
-import android.annotation.SuppressLint
 import android.os.Build
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import com.example.data.entity.BasicTeamData
 import com.example.stats.R
 import com.example.stats.base.BaseActivity
-import com.example.stats.databinding.ActivityGameStatsDetailBinding
 import com.example.stats.databinding.ActivityTeamGameListBinding
 import com.example.stats.model.BasicTeamModel
 import com.example.stats.model.DateModel
 import com.example.stats.viewmodel.TeamGameListViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
 
+@AndroidEntryPoint
 class TeamGameListActivity(
 ) : BaseActivity<ActivityTeamGameListBinding, TeamGameListViewModel>() {
     override val layoutId = R.layout.activity_team_game_list
-    override val viewModel: TeamGameListViewModel by viewModel()
+    override val viewModel: TeamGameListViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
     var teamYear = LocalDate.now().year

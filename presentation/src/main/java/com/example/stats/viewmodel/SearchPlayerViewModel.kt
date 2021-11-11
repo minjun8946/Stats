@@ -14,9 +14,12 @@ import com.example.stats.model.BasicModel
 import com.example.stats.model.PageModel
 import com.example.stats.model.toBasicModel
 import com.example.stats.model.toEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.observers.DisposableSingleObserver
+import javax.inject.Inject
 
-class SearchPlayerViewModel(
+@HiltViewModel
+class SearchPlayerViewModel @Inject constructor(
     private val getAllPlayerUseCase: GetAllPlayerUseCase,
 ):BaseViewModel() {
 

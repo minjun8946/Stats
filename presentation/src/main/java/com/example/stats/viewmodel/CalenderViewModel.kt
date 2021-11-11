@@ -13,9 +13,12 @@ import com.example.stats.base.BaseViewModel
 import com.example.stats.model.DateModel
 import com.example.stats.model.GamesModel
 import com.example.stats.model.toEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.observers.DisposableSingleObserver
+import javax.inject.Inject
 
-class CalenderViewModel(
+@HiltViewModel
+class CalenderViewModel @Inject constructor(
     private val getGamesDataUseCase : GetGamesDataUseCase,
 ) : BaseViewModel() {
 

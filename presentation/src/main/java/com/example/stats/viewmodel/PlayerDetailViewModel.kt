@@ -14,11 +14,14 @@ import com.example.stats.base.SingleLiveEvent
 import com.example.stats.model.PlayerSeasonAveragesModel
 import com.example.stats.model.PlayerSeasonIdModel
 import com.example.stats.model.toEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.observers.DisposableSingleObserver
 import java.time.LocalDate
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-class PlayerDetailViewModel(
+@HiltViewModel
+class PlayerDetailViewModel @Inject constructor(
     private val getPlayerSeasonAveragesUseCase: GetPlayerSeasonAveragesUseCase
 ) : BaseViewModel() {
 

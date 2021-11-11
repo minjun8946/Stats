@@ -3,19 +3,21 @@ package com.example.stats.ui
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.example.stats.R
 import com.example.stats.base.BaseActivity
 import com.example.stats.base.teamImage
 import com.example.stats.databinding.ActivityGameStatsDetailBinding
 import com.example.stats.model.StatsModel
 import com.example.stats.viewmodel.GameStatsDetailViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GameStatsDetailActivity :
     BaseActivity<ActivityGameStatsDetailBinding, GameStatsDetailViewModel>() {
 
     override val layoutId = R.layout.activity_game_stats_detail
-    override val viewModel : GameStatsDetailViewModel by viewModel()
+    override val viewModel : GameStatsDetailViewModel by viewModels()
     override fun init() {
         val basicData = intent.getSerializableExtra("statsData") as StatsModel
         inputStatsData(basicData)

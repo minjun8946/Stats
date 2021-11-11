@@ -11,10 +11,13 @@ import com.example.stats.base.BaseViewModel
 import com.example.stats.model.GameIdModel
 import com.example.stats.model.StatsModel
 import com.example.stats.model.toEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.observers.DisposableSingleObserver
 import retrofit2.HttpException
+import javax.inject.Inject
 
-class StatsViewModel(
+@HiltViewModel
+class StatsViewModel @Inject constructor(
     private val getPlayerStatsUseCase: GetPlayerStatsUseCase
 ) : BaseViewModel() {
 
