@@ -1,7 +1,5 @@
 package com.example.stats.viewmodel
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.example.domain.base.Result
 import com.example.domain.entity.GamesInfo
 import com.example.domain.usecase.GetGamesDataUseCase
@@ -28,8 +26,6 @@ class CalenderViewModel @Inject constructor(
     fun getGamesData(date : DateModel){
 
         val disposableObserver = object : DisposableSingleObserver<Result<GamesInfo>>(){
-
-            @RequiresApi(Build.VERSION_CODES.O)
             override fun onSuccess(t: Result<GamesInfo>) {
                 when(t){
                     is Result.Success -> {
