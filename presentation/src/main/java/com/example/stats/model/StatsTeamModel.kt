@@ -1,7 +1,6 @@
 package com.example.stats.model
 
 import com.example.domain.entity.StatsTeam
-import com.example.stats.base.teamImage
 import java.io.Serializable
 
 data class StatsTeamModel(
