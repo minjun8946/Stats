@@ -2,11 +2,11 @@ package com.example.data.entity
 
 import com.example.domain.entity.PlayerSeasonAveragesInfo
 
-data class PlayerSeasonAveragesInfoData(
+data class PlayerSeasonAveragesInfoResponse(
     val data : List<PlayerSeasonAveragesData>
 )
 
-fun PlayerSeasonAveragesInfoData.toEntity() =
+fun PlayerSeasonAveragesInfoResponse.toEntity() =
     PlayerSeasonAveragesInfo(
         playerSeasonAveragesInfo = data.map { it.toEntity() }
     )

@@ -7,7 +7,7 @@ import io.reactivex.Single
 class PlayerDataSourceImpl(private val api : ApiService) : PlayerDataSource{
     override fun getBasicData(
         pageData: PageData
-    ): Single<StatsBasicInfoData> =
+    ): Single<StatsBasicInfoResponse> =
         api.getAllPlayerInfo(
             page= pageData.page,
             perPage = pageData.perPage,
@@ -16,13 +16,13 @@ class PlayerDataSourceImpl(private val api : ApiService) : PlayerDataSource{
 
     override fun getPlayerSeasonAverages(
         playerSeasonIdData: PlayerSeasonIdData
-    ): Single<PlayerSeasonAveragesInfoData> =
+    ): Single<PlayerSeasonAveragesInfoResponse> =
         api.getPlayerSeasonAveragesInfo(
             season = playerSeasonIdData.season,
             playerId = playerSeasonIdData.playerId
         )
 
-    override fun getPlayerStats(gamesId: GameIdData): Single<PlayerStatsInfoData> =
+    override fun getPlayerStats(gamesId: GameIdData): Single<PlayerStatsInfoResponse> =
         api.getPlayerStatsInfo(
             gameId = gamesId.gameId,
             perPage = gamesId.perPage

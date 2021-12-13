@@ -12,16 +12,16 @@ interface ApiService {
         @Query("page") page : Int,
         @Query("per_page") perPage : Int,
         @Query("search") search : String?
-    ):Single<StatsBasicInfoData>
+    ):Single<StatsBasicInfoResponse>
 
     @GET("season_averages")
     fun getPlayerSeasonAveragesInfo(
         @Query("season") season : Int,
         @Query("player_ids[]") playerId : Int
-    ) : Single<PlayerSeasonAveragesInfoData>
+    ) : Single<PlayerSeasonAveragesInfoResponse>
 
     @GET("teams")
-    fun getTeamList() : Single<TeamBasicInfoData>
+    fun getTeamList() : Single<TeamBasicInfoResponse>
 
     @GET("games")
     fun getGameData(
@@ -30,11 +30,11 @@ interface ApiService {
         @Query("team_ids[]") teamId : Int?,
         @Query("page") page : Int,
         @Query("per_page") perPage: Int,
-    ) : Single<GamesInfoData>
+    ) : Single<GamesInfoResponse>
 
     @GET("stats")
     fun getPlayerStatsInfo(
         @Query("game_ids[]") gameId : Int,
         @Query("per_page") perPage: Int
-    ) : Single<PlayerStatsInfoData>
+    ) : Single<PlayerStatsInfoResponse>
 }

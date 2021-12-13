@@ -5,9 +5,9 @@ import io.reactivex.Single
 
 interface PlayerDataSource {
 
-    fun getBasicData(pageData : PageData) : Single<StatsBasicInfoData>
+    fun getBasicData(pageData : PageData) : Single<StatsBasicInfoResponse>
 
-    fun getPlayerSeasonAverages(playerSeasonIdData: PlayerSeasonIdData) : Single<PlayerSeasonAveragesInfoData>
+    fun getPlayerSeasonAverages(playerSeasonIdData: PlayerSeasonIdData) : Single<PlayerSeasonAveragesInfoResponse>
 
-    fun getPlayerStats(gamesId : GameIdData) : Single<PlayerStatsInfoData>
+    fun getPlayerStats(gamesId : GameIdData) : Single<PlayerStatsInfoResponse>
 }
