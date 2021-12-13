@@ -2,6 +2,7 @@ package com.example.domain
 
 import com.example.domain.base.ErrorHandler
 import com.example.domain.base.Result
+import io.reactivex.Completable
 import io.reactivex.Single
 
 fun <T> Single<T>.toResult(
@@ -27,7 +28,7 @@ fun <T> Single<Result<T>>.processLocal(
     saveLocalFun: (T) -> Unit
 ): Single<Result<T>> = this
     .flatMap { result ->
-        when(result) {
+        when (result) {
             is Result.Success -> {
                 saveLocalFun(result.response)
                 Single.just(result)
@@ -42,3 +43,6 @@ fun <T> Single<Result<T>>.processLocal(
             }
         }
     }
+
+fun Completable.toSingleResult(handler: ErrorHandler): Single<Result<Unit>> = this
+    .toSingle {}.toResult(handler)
