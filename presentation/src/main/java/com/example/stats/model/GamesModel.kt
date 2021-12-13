@@ -2,6 +2,7 @@ package com.example.stats.model
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.domain.entity.GameResult
 import com.example.domain.entity.Games
 import com.example.stats.base.koreanDay
 import java.io.Serializable
@@ -18,6 +19,20 @@ data class GamesModel(
     var homeTeam : HomeTeamModel,
     var visitorTeam : VisitorTeamModel
 ) : Serializable
+
+fun GamesModel.toGameResult() =
+    GameResult(
+        gameId = gameId,
+        gameDate = gameDate,
+        homeTeamScore = homeTeamScore,
+        visitorTeamScore = visitorTeamScore,
+        season = season,
+        period = period,
+        status = status,
+        postSeason = postSeason,
+        homeTeam = homeTeam.toHomeTeam(),
+        visitorTeam =  visitorTeam.toVisitorTeam()
+    )
 
 
 @RequiresApi(Build.VERSION_CODES.O)
