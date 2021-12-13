@@ -2,6 +2,7 @@ package com.example.stats.di
 
 import android.app.Application
 import com.example.data.datasource.*
+import com.example.data.local.GameResultDao
 import com.example.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
@@ -16,9 +17,10 @@ object DataSourceModule {
     @Singleton
     @Provides
     fun provideGamesDataSource(
-        apiService: ApiService
+        apiService: ApiService,
+        gameResultDao : GameResultDao
     ) : GamesDataSource {
-        return GamesDataSourceImpl(apiService)
+        return GamesDataSourceImpl(apiService,gameResultDao)
     }
 
     @Singleton
