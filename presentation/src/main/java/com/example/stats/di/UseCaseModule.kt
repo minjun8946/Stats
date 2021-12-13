@@ -44,4 +44,16 @@ object UseCaseModule {
     fun provideGetTeamListUseCase(
         teamService: TeamService
     ) = GetTeamListUseCase(teamService)
+
+    @Singleton
+    @Provides
+    fun provideInsertGameDataUseCase(
+        gamesService: GamesService
+    ) = InsertGameDataUseCase(gamesService)
+
+    @Singleton
+    @Provides
+    fun provideGetGameResultUseCase(
+        gamesService: GamesService
+    ) = GetGameResultUseCase(gamesService)
 }
