@@ -9,10 +9,10 @@ data class HomeTeamModel(
     val homeCityName : String
 ) : Serializable
 
-fun HomeTeamModel.toVisitorTeamModel() =
-    VisitorTeamModel(
-        visitorCityName = homeCityName,
-        visitorId = homeTeamId
+fun HomeTeamModel.toHomeTeam() =
+    HomeTeam(
+        homeTeamId = homeTeamId,
+        homeCityName = homeCityName
     )
 
 fun HomeTeam.toEntity() =
