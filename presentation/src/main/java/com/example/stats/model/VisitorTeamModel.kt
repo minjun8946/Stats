@@ -15,8 +15,8 @@ fun VisitorTeam.toEntity() =
         visitorCityName = visitorCityName
     )
 
-fun VisitorTeamModel.toHomeTeamModel() =
-    HomeTeamModel(
-        homeCityName = visitorCityName,
-        homeTeamId = visitorId
+fun VisitorTeamModel.toVisitorTeam() =
+    VisitorTeam(
+        visitorId = visitorId,
+        visitorCityName = visitorCityName
     )
