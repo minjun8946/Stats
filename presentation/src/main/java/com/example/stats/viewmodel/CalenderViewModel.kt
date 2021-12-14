@@ -67,7 +67,7 @@ class CalenderViewModel @Inject constructor(
             override fun onSuccess(t: Result<GamesInfo>) {
                 when(t){
                     is Result.Success -> {
-                        gamesData = t.response.data.filter { it.visitorTeamScore != 0 }.map { it.toEntity() } as ArrayList<GamesModel>
+                        gamesData = t.response.data.map { it.toEntity() } as ArrayList<GamesModel>
                         gameListAdapter.changeData(gamesData.map { it.toRecyclerItem() })
                         println(gamesData)
                         insertGameData(gamesData.map { it.toGameResult() })
@@ -83,6 +83,7 @@ class CalenderViewModel @Inject constructor(
 
         execute(date.toEntity(),disposableObserver,getGamesDataUseCase)
     }
+
     fun GamesModel.toRecyclerItem() =
         RecyclerItem(
             data = this,
