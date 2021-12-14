@@ -31,7 +31,7 @@ class TeamGameListViewModel @Inject constructor(
                 when (t) {
                     is Result.Success -> {
                         println(t.response.data)
-                        gamesData = t.response.data.filter { it.visitorTeamScore != 0 }
+                        gamesData = t.response.data.filter { it.visitorTeamScore != 0 && !it.gameDate.contains("2021-08")}
                             .map { it.toEntity() } as ArrayList<GamesModel>
                         gamesData.sortBy { it.gameDate }
                         gameListAdapter.changeData(gamesData.map { it.toRecyclerItem() })
