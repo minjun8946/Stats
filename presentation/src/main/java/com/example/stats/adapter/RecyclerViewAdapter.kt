@@ -63,9 +63,15 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingView
                 }
                 R.layout.item_game_list -> {
                     recyclerItem = getItems(position)
-                    val intent = Intent(view.context, StatsActivity::class.java)
-                    intent.putExtra("gameData", recyclerItem.data as GamesModel)
-                    view.context.startActivity(intent)
+                    val data = recyclerItem.data as GamesModel
+                    if(data.period != 0 && data.homeTeamScore != "0"){
+                        val intent = Intent(view.context, StatsActivity::class.java)
+                        intent.putExtra("gameData", recyclerItem.data as GamesModel)
+                        view.context.startActivity(intent)
+                    }
+
+
+
                 }
                 R.layout.item_game_player -> {
                     recyclerItem = getItems(position)
@@ -76,7 +82,7 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.BindingView
                 R.layout.item_team -> {
                     recyclerItem = getItems(position)
                     val intent = Intent(view.context, TeamGameListActivity::class.java)
-                    intent.putExtra("teamData",recyclerItem.data as BasicTeamModel)
+                    intent.putExtra("teamData", recyclerItem.data as BasicTeamModel)
                     view.context.startActivity(intent)
                 }
             }
