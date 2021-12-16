@@ -24,7 +24,7 @@ class GamesDataSourceImpl(
     override fun insertGame(gameResult: List<GameResultEntity>): Completable =
         gameResultDao.insertGame(gameResult)
 
-    override fun getGameResult(): Single<List<GameResultEntity>> =
-        gameResultDao.getGameResult()
+    override fun getGameResult(season : String): Single<List<GameResultEntity>> =
+        gameResultDao.getGameResult(season)
 
 }

@@ -26,6 +26,6 @@ class GamesServiceImpl(
             handler = handler,
         )
 
-    override fun getGameResult(): Single<Result<List<GameResult>>> =
-        gamesRepository.getGameResult().toResult(handler)
+    override fun getGameResult(season: String): Single<Result<List<GameResult>>> =
+        gamesRepository.getGameResult(season).toResult(handler)
 }

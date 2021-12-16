@@ -12,5 +12,5 @@ interface GamesRepository {
 
     fun insertGame(gameResult : List<GameResult>) : Completable
 
-    fun getGameResult() : Single<List<GameResult>>
+    fun getGameResult(season : String) : Single<List<GameResult>>
 }

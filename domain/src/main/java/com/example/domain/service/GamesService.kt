@@ -13,5 +13,5 @@ interface GamesService {
 
     fun insertGame(gameResult : List<GameResult>) : Single<Result<Unit>>
 
-    fun getGameResult() : Single<Result<List<GameResult>>>
+    fun getGameResult(season: String) : Single<Result<List<GameResult>>>
 }

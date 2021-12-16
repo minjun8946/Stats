@@ -11,5 +11,5 @@ interface GamesDataSource {
 
     fun insertGame(gameResult : List<GameResultEntity>) : Completable
 
-    fun getGameResult() : Single<List<GameResultEntity>>
+    fun getGameResult(season : String) : Single<List<GameResultEntity>>
 }

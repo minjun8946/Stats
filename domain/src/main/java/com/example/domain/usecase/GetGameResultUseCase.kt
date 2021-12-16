@@ -8,7 +8,7 @@ import io.reactivex.Single
 
 class GetGameResultUseCase(
     val gamesService: GamesService
-) : UseCase<Unit,Result<List<GameResult>>>() {
-    override fun create(data: Unit): Single<Result<List<GameResult>>> =
-        gamesService.getGameResult()
+) : UseCase<String,Result<List<GameResult>>>() {
+    override fun create(data: String): Single<Result<List<GameResult>>> =
+        gamesService.getGameResult(data)
 }

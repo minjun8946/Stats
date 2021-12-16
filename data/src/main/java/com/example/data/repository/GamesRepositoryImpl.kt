@@ -19,6 +19,6 @@ class GamesRepositoryImpl(
     override fun insertGame(gameResult: List<GameResult>): Completable =
         dataSource.insertGame(gameResult.map { it.toEntity() })
 
-    override fun getGameResult(): Single<List<GameResult>> =
-        dataSource.getGameResult().map { it -> it.map { it.toEntity() } }
+    override fun getGameResult(season: String): Single<List<GameResult>> =
+        dataSource.getGameResult(season).map { its -> its.map { it.toEntity() } }
 }
