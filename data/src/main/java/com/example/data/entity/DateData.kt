@@ -6,6 +6,7 @@ data class DateData(
     val date : String?,
     val season : Int?,
     val teamId : Int?,
+    val postseason : Boolean?,
     val page : Int,
     val perPage : Int,
 )
@@ -15,6 +16,7 @@ fun Date.toEntity() =
         date = date,
         season = season,
         teamId = teamId,
+        postseason = postseason,
         page = page,
         perPage = perPage
     )

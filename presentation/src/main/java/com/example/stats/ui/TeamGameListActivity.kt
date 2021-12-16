@@ -40,7 +40,7 @@ class TeamGameListActivity(
     }
 
     private fun getTeamGameData(teamData: BasicTeamModel) {
-        viewModel.getTeamGamesData(DateModel(null, teamYear, teamData.teamId, 0, 100))
+        viewModel.getTeamGamesData(DateModel(null, teamYear, teamData.teamId,false, 0, 100))
         setYear(teamYear)
     }
 }

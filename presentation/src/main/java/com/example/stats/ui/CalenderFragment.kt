@@ -53,6 +53,7 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding, CalenderViewModel
                 koreaTime.toString(),
                 null,
                 null,
+                true,
                 0,
                 100
             )
