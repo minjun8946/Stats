@@ -10,7 +10,7 @@ data class PlayerStats(
 
     val block: Int,
 
-    val deffensiveRebound : Int,
+    val defensiveRebound : Int,
 
     val threePointSuccessRate : Double,
 

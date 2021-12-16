@@ -24,41 +24,11 @@ import javax.inject.Inject
 @HiltViewModel
 class CalenderViewModel @Inject constructor(
     private val getGamesDataUseCase : GetGamesDataUseCase,
-    private val insertGameDataUseCase: InsertGameDataUseCase,
     private val getGameResultUseCase: GetGameResultUseCase
 ) : BaseViewModel() {
 
     var gamesData = ArrayList<GamesModel>()
     var gameListAdapter = RecyclerViewAdapter()
-
-    fun insertGameData(data : List<GameResult>){
-        val disposableSingleObserver = object : DisposableSingleObserver<Result<Unit>>(){
-            override fun onSuccess(t: Result<Unit>) {
-                println("성공")
-                getGameResult()
-            }
-
-            override fun onError(e: Throwable) {
-                println("실패")
-            }
-        }
-        execute(data,disposableSingleObserver,insertGameDataUseCase)
-
-    }
-
-    fun getGameResult(){
-        val disposableSingleObserver = object : DisposableSingleObserver<Result<List<GameResult>>>(){
-            override fun onSuccess(t: Result<List<GameResult>>) {
-                println("room success $t")
-            }
-
-            override fun onError(e: Throwable) {
-                println("실패")
-            }
-
-        }
-        execute(Unit,disposableSingleObserver,getGameResultUseCase)
-    }
 
     fun getGamesData(date : DateModel){
 
@@ -70,7 +40,6 @@ class CalenderViewModel @Inject constructor(
                         gamesData = t.response.data.map { it.toEntity() } as ArrayList<GamesModel>
                         gameListAdapter.changeData(gamesData.map { it.toRecyclerItem() })
                         println(gamesData)
-                        insertGameData(gamesData.map { it.toGameResult() })
                     }
                     is Result.Error -> println(t.response)
                 }
