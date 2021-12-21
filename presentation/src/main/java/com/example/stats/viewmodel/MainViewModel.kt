@@ -26,15 +26,15 @@ class MainViewModel @Inject constructor(
 ) : BaseViewModel(){
 
     var gamesData = ArrayList<GamesModel>()
+    val sizeEvent = SingleLiveEvent<Int>()
 
-    fun checkRoomData(year : String) : Boolean{
-        var size = 0
+    fun checkRoomData(year : String){
         val disposableSingleObserver = object : DisposableSingleObserver<Result<List<GameResult>>>(){
 
             override fun onSuccess(t: Result<List<GameResult>>) {
                 when(t){
                     is Result.Success -> {
-                        size = t.response.size
+                        sizeEvent.setValue(t.response.size/100)
                     }
                     else -> println("error")
                 }
@@ -44,7 +44,6 @@ class MainViewModel @Inject constructor(
             }
         }
         execute(year,disposableSingleObserver,getGamesResultUseCase)
-        return size >0
     }
 
     fun getGameData(data : DateModel) {

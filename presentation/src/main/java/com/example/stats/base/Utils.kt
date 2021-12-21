@@ -5,11 +5,53 @@ import androidx.annotation.RequiresApi
 import com.example.stats.R
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import kotlin.math.roundToInt
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun koreanDay(dateString : String) : String{
     val date = LocalDate.parse(dateString, DateTimeFormatter.ISO_DATE)
     return "${date.plusDays(1)}"
+}
+
+fun doubleToRate(double: Double) : Float{
+    val rate = double *100
+    return (rate * 10).roundToInt()/10f
+}
+
+fun teamName(teamId : Int) : String{
+    return when(teamId){
+        1 -> "Hawks"
+        2 -> "Celtics"
+        3 -> "Nets"
+        4 -> "Hornets"
+        5 -> "Bulls"
+        6 -> "Cavaliers"
+        7 -> "Mavericks"
+        8 -> "Nuggets"
+        9 -> "Pistons"
+        10 -> "Warriors"
+        11 -> "Rockets"
+        12 -> "Pacers"
+        13 -> "Clippers"
+        14 -> "Lakers"
+        15 -> "Grizzlies"
+        16 -> "Heat"
+        17 -> "Bucks"
+        18 -> "Timberwolves"
+        19 -> "Pelicans"
+        20 -> "Knicks"
+        21 -> "Thunder"
+        22 -> "Magic"
+        23 -> "76ers"
+        24 -> "Suns"
+        25 -> "Blazers"
+        26 -> "Kings"
+        27 -> "Spurs"
+        28 -> "Raptors"
+        29 -> "Jazz"
+        30 -> "Wizards"
+        else -> "Wizards"
+    }
 }
 
 fun teamImage(teamId : Int) : Int{

@@ -28,16 +28,20 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>(),
     override fun init() {
         mainViewPagerSlide()
         firstGetGameData()
-    }
 
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun firstGetGameData() {
         val localYear = LocalDate.now().year
-        if(viewModel.checkRoomData("$localYear - ${localYear+1}")){
-            for(i in 0..17){
-                viewModel.getGameData(DateModel(null, localYear, null,false, i, 100))
+        viewModel.checkRoomData("$localYear - ${localYear+1}")
+        viewModel.sizeEvent.observe(this,{
+            if(it ==0){
+                for(i in 0..17){
+                    viewModel.getGameData(DateModel(null, 2021, null,false, i, 100))
+                }
             }
-        }
+        })
+
     }
 
     private fun mainViewPagerSlide() {

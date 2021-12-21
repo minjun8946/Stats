@@ -1,6 +1,7 @@
 package com.example.stats.model
 
 import com.example.domain.entity.PlayerSeasonAverages
+import com.example.stats.base.doubleToRate
 import kotlin.math.*
 
 data class PlayerSeasonAveragesModel(
@@ -53,8 +54,3 @@ fun PlayerSeasonAverages.toEntity() =
         personalFoul = "P.F\n$personalFoul",
         points = "PTS\n$points",
     )
-
-fun doubleToRate(double: Double) : Float{
-    val rate = double *100
-    return (rate * 10).roundToInt()/10f
-}

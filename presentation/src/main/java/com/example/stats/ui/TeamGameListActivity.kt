@@ -8,6 +8,7 @@ import com.example.stats.base.BaseActivity
 import com.example.stats.databinding.ActivityTeamGameListBinding
 import com.example.stats.model.BasicTeamModel
 import com.example.stats.model.DateModel
+import com.example.stats.model.GameResultModel
 import com.example.stats.viewmodel.TeamGameListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
@@ -22,7 +23,7 @@ class TeamGameListActivity(
     var teamYear = LocalDate.now().year
 
     override fun init() {
-        val teamData = intent.getSerializableExtra("teamData") as BasicTeamModel
+        val teamData = intent.getSerializableExtra("teamData") as GameResultModel
         getTeamGameData(teamData)
         binding.plusYearBtn.setOnClickListener {
             teamYear++
@@ -39,7 +40,7 @@ class TeamGameListActivity(
         binding.teamYearTv.text =  "$year - ${year+1}"
     }
 
-    private fun getTeamGameData(teamData: BasicTeamModel) {
+    private fun getTeamGameData(teamData: GameResultModel) {
         viewModel.getTeamGamesData(DateModel(null, teamYear, teamData.teamId,false, 0, 100))
         setYear(teamYear)
     }
