@@ -44,15 +44,24 @@ fun Games.toEntity() =
         visitorTeamScore = "$visitorTeamScore",
         season = "$season - ${season+1}",
         period = period,
-        status = overTime(period, status),
+        status = time(period, status),
         postSeason = postSeason,
         homeTeam = homeTeam.toEntity(),
         visitorTeam = visitorTeam.toEntity()
     )
 
-fun overTime(period : Int, status: String) : String{
+fun time(period : Int, status: String) : String{
     return when(period){
-        0,1,2,3,4 -> status
+        0 -> {
+            val time = status.split(" ",":")
+            val hour = if(time[0].toInt() >=10){
+                "${time[0].toInt() +2} : ${time[1]} PM"
+            }else{
+                "${time[0].toInt() +2} : ${time[1]} AM"
+            }
+            return hour
+        }
+        1,2,3,4 -> status
         else ->{
             if(status != "Final") "OT${period-4} Qtr"
             else "Final/OT${period-4}"
