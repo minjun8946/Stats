@@ -32,14 +32,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>(),
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun firstGetGameData() {
-        val localYear = LocalDate.now().year
+        val localYear = 2021
         viewModel.checkRoomData("$localYear - ${localYear+1}")
         viewModel.sizeEvent.observe(this,{
-            if(it ==0){
                 for(i in 0..17){
                     viewModel.getGameData(DateModel(null, 2021, null,false, i, 100))
                 }
-            }
         })
 
     }

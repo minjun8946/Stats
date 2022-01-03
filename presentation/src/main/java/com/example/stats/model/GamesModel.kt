@@ -54,12 +54,17 @@ fun time(period : Int, status: String) : String{
     return when(period){
         0 -> {
             val time = status.split(" ",":")
-            val hour = if(time[0].toInt() >=10){
-                "${time[0].toInt() +2} : ${time[1]} PM"
-            }else{
-                "${time[0].toInt() +2} : ${time[1]} AM"
+            try {
+                val hour = if(time[0].toInt() >=10){
+                    "${time[0].toInt() +2} : ${time[1]} PM"
+                }else{
+                    "${time[0].toInt() +2} : ${time[1]} AM"
+                }
+                return hour
+            }catch (e : Throwable){
+                status
             }
-            return hour
+
         }
         1,2,3,4 -> status
         else ->{

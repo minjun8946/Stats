@@ -47,7 +47,6 @@ class MainViewModel @Inject constructor(
     }
 
     fun getGameData(data : DateModel) {
-        println("실행실행")
         val disposableSingleObserver = object : DisposableSingleObserver<Result<GamesInfo>>() {
             @RequiresApi(Build.VERSION_CODES.O)
             override fun onSuccess(t: Result<GamesInfo>) {

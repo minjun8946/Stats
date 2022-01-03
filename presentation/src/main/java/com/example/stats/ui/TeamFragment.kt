@@ -18,7 +18,7 @@ class TeamFragment : BaseFragment<FragmentTeamBinding,TeamViewModel>() {
     override val layoutId = R.layout.fragment_team
 
     @RequiresApi(Build.VERSION_CODES.O)
-    var year = LocalDate.now().year
+    var year = 2021
 
     override fun init() {
         viewModel.getTeamList()
