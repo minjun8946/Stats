@@ -1,6 +1,7 @@
 package com.example.stats.ui
 
 import android.os.Build
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import com.example.stats.R
@@ -12,6 +13,7 @@ import com.example.stats.model.GameResultModel
 import com.example.stats.viewmodel.TeamGameListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 @AndroidEntryPoint
 class TeamGameListActivity(
@@ -19,15 +21,19 @@ class TeamGameListActivity(
     override val layoutId = R.layout.activity_team_game_list
     override val viewModel: TeamGameListViewModel by viewModels()
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    var teamYear = LocalDate.now().year
+
+    private var teamYear = 2021
 
     override fun init() {
         val teamData = intent.getSerializableExtra("teamData") as GameResultModel
         getTeamGameData(teamData)
         binding.plusYearBtn.setOnClickListener {
-            teamYear++
-            getTeamGameData(teamData)
+            if (teamYear == 2021){
+                Toast.makeText(this,"다음 시즌이 없습니다", Toast.LENGTH_SHORT).show()
+            }else{
+                teamYear++
+                getTeamGameData(teamData)
+            }
         }
 
         binding.minusYearBtn.setOnClickListener {
