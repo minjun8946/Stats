@@ -1,6 +1,7 @@
 package com.example.stats.ui
 
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import com.example.stats.R
@@ -24,10 +25,13 @@ class TeamFragment : BaseFragment<FragmentTeamBinding,TeamViewModel>() {
         viewModel.getTeamList()
         getGameData()
         binding.plusYearBtn.setOnClickListener {
-            year++
-            setYear()
-            getGameData()
-
+            if (year == 2021){
+                Toast.makeText(activity,"다음 시즌이 없습니다",Toast.LENGTH_SHORT).show()
+            }else{
+                year++
+                setYear()
+                getGameData()
+            }
         }
 
         binding.minusYearBtn.setOnClickListener {
@@ -41,15 +45,15 @@ class TeamFragment : BaseFragment<FragmentTeamBinding,TeamViewModel>() {
 
     private fun getGameData(){
         viewModel.checkRoomData("${year-1} - $year")
-        viewModel.sizeEvent.observe(this,{
-            if(it == 0){
-                for(i in it..17){
+        viewModel.sizeEvent.observe(this) {
+            if (it == 0) {
+                for (i in it..17) {
                     println("숫자 $it")
-                    viewModel.getGameData(DateModel(null, year-1, null,false, i, 100))
+                    viewModel.getGameData(DateModel(null, year - 1, null, false, i, 100))
                 }
             }
 
-        })
+        }
         viewModel.getGameResult(setYear())
     }
 
