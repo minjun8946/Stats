@@ -34,11 +34,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>(),
     private fun firstGetGameData() {
         val localYear = 2021
         viewModel.checkRoomData("$localYear - ${localYear+1}")
-        viewModel.sizeEvent.observe(this,{
-                for(i in 0..17){
-                    viewModel.getGameData(DateModel(null, 2021, null,false, i, 100))
-                }
-        })
+        viewModel.sizeEvent.observe(this) {
+            for (i in 0..17) {
+                viewModel.getGameData(DateModel(null, 2021, null, false, i, 100))
+            }
+        }
 
     }
 

@@ -27,11 +27,11 @@ class PlayerDetailActivity : BaseActivity<ActivityPlayerDetailBinding, PlayerDet
         getPlayerSeasonEvent(basicData)
     }
     private fun getPlayerSeasonEvent(basicData: BasicModel) {
-        viewModel.getPlayerSeasonEvent.observe(this, {
+        viewModel.getPlayerSeasonEvent.observe(this) {
             if (it > 1980) viewModel.getPlayerSeasonStats(
                 PlayerSeasonIdModel(it, basicData.personId)
             )
-        })
+        }
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")

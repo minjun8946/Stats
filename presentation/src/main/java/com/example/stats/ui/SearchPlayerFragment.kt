@@ -23,15 +23,15 @@ class SearchPlayerFragment : BaseFragment<FragmentSearchPlayerBinding, SearchPla
 
 
     private fun search() {
-        viewModel.searchEvent.observe(this, {
+        viewModel.searchEvent.observe(this) {
             getAllPlayer()
-        })
+        }
     }
 
     private fun scrollListenerEvent() {
-        viewModel.scrollListenerEvent.observe(this, {
+        viewModel.scrollListenerEvent.observe(this) {
             getAllPlayer()
-        })
+        }
     }
 
 
