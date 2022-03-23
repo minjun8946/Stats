@@ -17,14 +17,12 @@ import javax.inject.Singleton
 object ApiModule {
     private const val BASE_URL = "https://www.balldontlie.io/api/v1/"
 
-    @Singleton
     @Provides
     fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor()
         .apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
-    @Singleton
     @Provides
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient
@@ -32,7 +30,6 @@ object ApiModule {
             .addInterceptor(httpLoggingInterceptor)
             .build()
 
-    @Singleton
     @Provides
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
@@ -41,7 +38,6 @@ object ApiModule {
         .client(providesOkHttpClient(providesHttpLoggingInterceptor()))
         .build()
 
-    @Singleton
     @Provides
     fun provideApiService(retrofit: Retrofit) : ApiService =
         retrofit.create(ApiService::class.java)

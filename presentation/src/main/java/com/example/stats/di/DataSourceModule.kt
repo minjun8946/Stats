@@ -14,7 +14,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DataSourceModule {
 
-    @Singleton
     @Provides
     fun provideGamesDataSource(
         apiService: ApiService,
@@ -23,7 +22,6 @@ object DataSourceModule {
         return GamesDataSourceImpl(apiService,gameResultDao)
     }
 
-    @Singleton
     @Provides
     fun providePlayerDataSource(
         apiService: ApiService
@@ -31,7 +29,6 @@ object DataSourceModule {
         return PlayerDataSourceImpl(apiService)
     }
 
-    @Singleton
     @Provides
     fun provideTeamDataSource(
         apiService: ApiService

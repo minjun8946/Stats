@@ -16,13 +16,11 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object ServiceModule {
 
-    @Singleton
     @Provides
     fun provideErrorHandle(): ErrorHandler{
         return ErrorHandlerImpl()
     }
 
-    @Singleton
     @Provides
     fun provideGamesService(
         gamesRepository: GamesRepository,
@@ -31,7 +29,6 @@ object ServiceModule {
         return GamesServiceImpl(gamesRepository, errorHandler)
     }
 
-    @Singleton
     @Provides
     fun providePlayerService(
         playerRepository: PlayerRepository,
@@ -40,7 +37,6 @@ object ServiceModule {
         return PlayerServiceImpl(playerRepository, errorHandler)
     }
 
-    @Singleton
     @Provides
     fun provideTeamService(
         teamRepository: TeamRepository,

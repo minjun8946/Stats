@@ -19,7 +19,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
-    @Singleton
     @Provides
     fun provideGamesRepository(
         gamesDataSource: GamesDataSource
@@ -27,7 +26,6 @@ object RepositoryModule {
         return GamesRepositoryImpl(gamesDataSource)
     }
 
-    @Singleton
     @Provides
     fun providePlayerRepository(
         playerDataSource: PlayerDataSource
@@ -35,7 +33,6 @@ object RepositoryModule {
         return PlayerRepositoryImpl(playerDataSource)
     }
 
-    @Singleton
     @Provides
     fun provideTeamRepository(
         teamDataSource: TeamDataSource

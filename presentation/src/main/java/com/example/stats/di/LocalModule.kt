@@ -16,7 +16,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object LocalModule {
 
-    @Singleton
     @Provides
     fun provideGameDataBase(
         @ApplicationContext context: Context
@@ -24,7 +23,6 @@ object LocalModule {
         .databaseBuilder(context, GameDataBase::class.java, "gameDataBase")
         .build()
 
-    @Singleton
     @Provides
     fun provideGameDao(gameResultDatabase: GameDataBase): GameResultDao = gameResultDatabase.gameDao()
 
