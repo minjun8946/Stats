@@ -1,5 +1,7 @@
 package com.example.stats.viewmodel
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.domain.base.Result
 import com.example.domain.entity.PlayerStatsInfo
 import com.example.domain.usecase.GetPlayerStatsUseCase
@@ -28,6 +30,7 @@ class StatsViewModel @Inject constructor(
 
         val disposableSingleObserver =
             object : DisposableSingleObserver<Result<PlayerStatsInfo>>() {
+                @RequiresApi(Build.VERSION_CODES.O)
                 override fun onSuccess(t: Result<PlayerStatsInfo>) {
 
                     when (t) {
