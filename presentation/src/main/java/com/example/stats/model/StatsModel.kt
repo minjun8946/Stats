@@ -1,5 +1,7 @@
 package com.example.stats.model
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.domain.entity.PlayerStats
 import java.io.Serializable
 
@@ -51,6 +53,7 @@ data class StatsModel(
     val playerInfo : StatsPlayerModel,
 ) : Serializable
 
+@RequiresApi(Build.VERSION_CODES.O)
 fun PlayerStats.toEntity() =
     StatsModel(
         point = " $points pts",
